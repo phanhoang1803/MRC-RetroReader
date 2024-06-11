@@ -192,7 +192,9 @@ class RetroArguments(DataArguments, SketchModelArguments, IntensiveModelArgument
             # raise AttributeError
         self.sketch_model_cls = model_cls
         self.sketch_model_type = model_cls.model_type
-        
+        if self.sketch_tokenizer_name is None:
+            self.sketch_tokenizer_name = self.sketch_model_name
+            
         # Intensive
         model_cls = getattr(models, self.intensive_achitectures, None)
         if model_cls is None:

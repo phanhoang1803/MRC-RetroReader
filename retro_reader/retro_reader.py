@@ -433,10 +433,10 @@ class RetroReader:
         
         print(f"Loading sketch tokenizer from {retro_args.sketch_tokenizer_name} ...")
         sketch_tokenizer = AutoTokenizer.from_pretrained(
-            pretrained_model_name_or_path="google/electra-large-discriminator",
-            # pretrained_model_name_or_path=retro_args.sketch_tokenizer_name,
-            # use_auth_token=retro_args.use_auth_token,
-            # revision=retro_args.sketch_revision,
+            # pretrained_model_name_or_path="google/electra-large-discriminator",
+            pretrained_model_name_or_path=retro_args.sketch_tokenizer_name,
+            use_auth_token=retro_args.use_auth_token,
+            revision=retro_args.sketch_revision,
         )
         
         # If `train_examples` is feeded, perform preprocessing
@@ -583,7 +583,9 @@ class RetroReader:
         def wandb_finish(module):
             for callback in module.callback_handler.callbacks:
                 if "wandb" in str(type(callback)).lower():
-                    callback._wandb.finish()
+                    # callback._wandb.finish()
+                    if hasattr(callback, '_wandb'):
+                        callback._wandb.finish()
                     callback._initialized = False
         
         # Train sketch reader
