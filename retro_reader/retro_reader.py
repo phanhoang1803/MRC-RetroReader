@@ -576,7 +576,7 @@ class RetroReader:
             C.QUESTION_COLUMN_NAME: [query], 
             C.CONTEXT_COLUMN_NAME: [context]
         })
-        return self.inference(predict_examples)
+        return self.inference(predict_examples, return_submodule_outputs=return_submodule_outputs)
     
     def train(self, module: str = "all"):
         
@@ -603,7 +603,7 @@ class RetroReader:
             self.intensive_reader.free_memory()
             wandb_finish(self.intensive_reader)
             
-    def inference(self, predict_examples: datasets.Dataset) -> Tuple[Any]:
+    def inference(self, predict_examples: datasets.Dataset, return_submodule_outputs: bool = False) -> Tuple[Any]:
         if "example_id" not in predict_examples.column_names:
             predict_examples = predict_examples.map(
                 lambda _, i: {"example_id": str(i)},
@@ -628,8 +628,8 @@ class RetroReader:
         self.intensive_reader.to("cpu")
         predictions, scores = self.rear_verifier(score_ext, score_diff, nbest_preds)
         outputs = (predictions, scores)
-        # if return_submodule_outputs:
-        #     outputs += (score_ext, nbest_preds, score_diff)
+        if return_submodule_outputs:
+            outputs += (score_ext, nbest_preds, score_diff)
         return outputs
             
     @property
