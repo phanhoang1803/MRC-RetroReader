@@ -24,7 +24,8 @@ class DistilBertForQuestionAnsweringAVPool(DistilBertPreTrainedModel):
     model_type = "DistilBert"
     
     def __init__(self, config):
-        super(DistilBertForQuestionAnsweringAVPool, self).__init__(config)
+        # super(DistilBertForQuestionAnsweringAVPool, self).__init__(config)
+        super().__init__(config)
         self.num_labels = config.num_labels
         
         self.DistilBert = DistilBertModel(config)
