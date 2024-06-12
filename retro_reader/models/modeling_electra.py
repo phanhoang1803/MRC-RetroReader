@@ -27,10 +27,6 @@ class ElectraForQuestionAnsweringAVPool(ElectraPreTrainedModel):
         self.num_labels = config.num_labels
         
         self.electra = ElectraModel(config)
-        # Freeze ElectraModel weights
-        for param in self.electra.parameters():
-            param.requires_grad = False
-        
         self.qa_outputs = nn.Linear(config.hidden_size, config.num_labels)
         self.has_ans = nn.Sequential(
             nn.Dropout(p=config.hidden_dropout_prob),
@@ -38,7 +34,6 @@ class ElectraForQuestionAnsweringAVPool(ElectraPreTrainedModel):
         )
         
         self.post_init()
-
     def forward(
         self,
         input_ids=None,

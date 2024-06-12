@@ -474,6 +474,15 @@ class RetroReader:
             revision=retro_args.sketch_revision,
         )
 
+        # Free sketch weights for transfer learning
+        if retro_args.sketch_freeze_layers == "none":
+            pass
+        else:
+            print("Freezing sketch weights ...")
+            for name, param in sketch_model.named_parameters():
+                if retro_args.sketch_freeze_layers in name:
+                    param.requires_grad_(False)
+
         # Get sketch reader
         sketch_training_args.run_name = sketch_run_name
         sketch_training_args.output_dir += "/sketch"
@@ -530,6 +539,15 @@ class RetroReader:
             use_auth_token=retro_args.use_auth_token,
             revision=retro_args.intensive_revision,
         )
+        
+        # Free intensive weights for transfer learning
+        if retro_args.intensive_freeze_layers == "none":
+            pass
+        else:
+            print("Freezing intensive weights ...")
+            for name, param in intensive_model.named_parameters():
+                if retro_args.intensive_freeze_layers in name:
+                    param.requires_grad_(False)
             
         # Get intensive reader
         intensive_training_args.run_name = intensive_run_name
@@ -568,26 +586,59 @@ class RetroReader:
         context: Union[str, List[str]],
         return_submodule_outputs: bool = False,
     ) -> Tuple[Any]:
+        """
+        Performs inference on a given query and context.
+
+        Args:
+            query (str): The query to be answered.
+            context (Union[str, List[str]]): The context in which the query is asked.
+                If it is a list of strings, they will be joined together.
+            return_submodule_outputs (bool, optional): Whether to return the outputs of the submodules.
+                Defaults to False.
+
+        Returns:
+            Tuple[Any]: A tuple containing the predictions, scores, and optionally the outputs of the submodules.
+        """
+        # If context is a list, join it into a single string
         if isinstance(context, list):
             context = " ".join(context)
+        
+        # Create a predict examples dataset with a single example
         predict_examples = datasets.Dataset.from_dict({
-            "example_id": ["0"],
-            C.ID_COLUMN_NAME: ["id-01"],
-            C.QUESTION_COLUMN_NAME: [query], 
-            C.CONTEXT_COLUMN_NAME: [context]
+            "example_id": ["0"],  # Example ID
+            C.ID_COLUMN_NAME: ["id-01"],  # ID
+            C.QUESTION_COLUMN_NAME: [query],  # Query
+            C.CONTEXT_COLUMN_NAME: [context],  # Context
         })
+        
+        # Perform inference on the predict examples dataset
         return self.inference(predict_examples, return_submodule_outputs=return_submodule_outputs)
     
     def train(self, module: str = "all"):
+        """
+        Trains the specified module.
+
+        Args:
+            module (str, optional): The module to train. Defaults to "all".
+                Possible values: "all", "sketch", "intensive".
+        """
         
         def wandb_finish(module):
+            """
+            Finishes the Weights & Biases (wandb) run for the given module.
+
+            Args:
+                module: The module for which to finish the wandb run.
+            """
             for callback in module.callback_handler.callbacks:
+                # Check if the callback is a wandb callback
                 if "wandb" in str(type(callback)).lower():
-                    # callback._wandb.finish()
+                    # Finish the wandb run
                     if hasattr(callback, '_wandb'):
                         callback._wandb.finish()
+                    # Reset the initialized flag
                     callback._initialized = False
-        
+       
         # Train sketch reader
         if module.lower() in ["all", "sketch"]:
             self.sketch_reader.train()
@@ -604,11 +655,24 @@ class RetroReader:
             wandb_finish(self.intensive_reader)
             
     def inference(self, predict_examples: datasets.Dataset, return_submodule_outputs: bool = False) -> Tuple[Any]:
+        """
+        Performs inference on the given predict examples dataset.
+
+        Args:
+            predict_examples (datasets.Dataset): The dataset containing the predict examples.
+            return_submodule_outputs (bool, optional): Whether to return the outputs of the submodules. Defaults to False.
+
+        Returns:
+            Tuple[Any]: A tuple containing the predictions, scores, and optionally the outputs of the submodules.
+        """
+        # Add the example_id column if it doesn't exist
         if "example_id" not in predict_examples.column_names:
             predict_examples = predict_examples.map(
                 lambda _, i: {"example_id": str(i)},
                 with_indices=True,
             )
+        
+        # Prepare the features for sketch reader and intensive reader
         sketch_features = predict_examples.map(
             self.sketch_prep_fn,
             batched=True,
@@ -619,17 +683,26 @@ class RetroReader:
             batched=True,
             remove_columns=predict_examples.column_names,
         )
+        
+        # Perform inference on sketch reader
         self.sketch_reader.to(self.sketch_reader.args.device)
         score_ext = self.sketch_reader.predict(sketch_features, predict_examples)
         self.sketch_reader.to("cpu")
+        
+        # Perform inference on intensive reader
         self.intensive_reader.to(self.intensive_reader.args.device)
         nbest_preds, score_diff = self.intensive_reader.predict(
             intensive_features, predict_examples, mode="retro_inference")
         self.intensive_reader.to("cpu")
+        
+        # Combine the outputs of the submodules
         predictions, scores = self.rear_verifier(score_ext, score_diff, nbest_preds)
         outputs = (predictions, scores)
+        
+        # Add the outputs of the submodules if required
         if return_submodule_outputs:
             outputs += (score_ext, nbest_preds, score_diff)
+        
         return outputs
             
     @property

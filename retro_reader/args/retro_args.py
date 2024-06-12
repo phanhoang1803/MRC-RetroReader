@@ -141,6 +141,12 @@ class SketchModelArguments(ModelArguments):
             "help": "The name of the pretrained sketch model."
         },
     )
+    sketch_freeze_layers: str = field(
+        default="none",
+        metadata={
+            "help": "Choices = ['none', 'keyword that if it appears in the layer name then that layer is frozen']"
+        },
+    )
     sketch_tokenizer_name: str = field(
         default=None,
         metadata={
@@ -167,6 +173,12 @@ class IntensiveModelArguments(ModelArguments):
         default="monologg/koelectra-base-v3-discriminator",
         metadata={
             "help": "The name of the pretrained intensive model."
+        },
+    )
+    intensive_freeze_layers: str = field(
+        default="none",
+        metadata={
+            "help": "Choices = ['none', 'keyword that if it appears in the layer name then that layer is frozen']"
         },
     )
     intensive_tokenizer_name: str = field(
