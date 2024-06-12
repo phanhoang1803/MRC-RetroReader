@@ -97,7 +97,7 @@ def main(args):
     #       process other types of data.
     
     # Minize the dataset for debugging
-    squad_v2["train"] = squad_v2["train"].select(range(1000))
+    squad_v2["train"] = squad_v2["train"].select(range(200))
     
     print("Integrating into the schema used in this library ...")
     squad_v2 = squad_v2.map(
