@@ -97,7 +97,8 @@ def main(args):
     #       process other types of data.
     
     # Minize the dataset for debugging
-    squad_v2["train"] = squad_v2["train"].select(range(200))
+    squad_v2["train"] = squad_v2["train"].select(range(5))
+    squad_v2["validation"] = squad_v2["validation"].select(range(5))
     
     print("Integrating into the schema used in this library ...")
     squad_v2 = squad_v2.map(
@@ -143,7 +144,7 @@ def main(args):
     
     # Train
     print("Training ...")
-    retro_reader.train()
+    retro_reader.train(module=args.module)
     logger.warning("Train retrospective reader Done.")
     
     
@@ -152,5 +153,6 @@ if __name__ == "__main__":
     parser.add_argument("--configs", "-c", type=str, default="configs/train_distilbert.yaml", help="config file path")
     parser.add_argument("--batch_size", "-b", type=int, default=1024, help="batch size")
     parser.add_argument("--resume_checkpoint", "-r", type=str, default=None, help="resume checkpoint path")
+    parser.add_argument("--module", "-m", type=str, default="all", help="module to train")
     args = parser.parse_args()
     main(args)

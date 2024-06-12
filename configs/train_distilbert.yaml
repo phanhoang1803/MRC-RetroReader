@@ -21,7 +21,7 @@ RetroDataModelArguments:
     
     # SketchModelArguments
     sketch_model_name: distilbert/distilbert-base-uncased
-    sketch_model_mode: transfer
+    # sketch_model_mode: transfer
     sketch_architectures: DistilBertForSequenceClassification
     
     # IntensiveModelArguments

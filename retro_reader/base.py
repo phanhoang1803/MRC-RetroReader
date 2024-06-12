@@ -30,9 +30,9 @@ from transformers.debug_utils import DebugOption
 if is_datasets_available():
     import datasets
     
-if is_torch_xla_available():
-    import torch_xla.core.xla_model as xm       # type: ignore
-    import torch_xla.debug.metrics as met       # type: ignore
+# if is_torch_xla_available():
+#     import torch_xla.core.xla_model as xm       # type: ignore
+#     import torch_xla.debug.metrics as met       # type: ignore
 
 from transformers import Trainer
 
@@ -236,9 +236,9 @@ class BaseReader(Trainer, ToMixin):
                 writer.write(f"{key} = {metrics[key]}\n")
             writer.write("\n")
             
-        if DebugOption.TPU_METRICS_DEBUG and is_torch_xla_available():
-            # Log debug metrics for PyTorch/XLA
-            xm.master_print(met.metrics_report())
+        # if DebugOption.TPU_METRICS_DEBUG and is_torch_xla_available():
+        #     # Log debug metrics for PyTorch/XLA
+        #     xm.master_print(met.metrics_report())
         
         # Call callback handler on evaluate
         self.control = self.callback_handler.on_evaluate(

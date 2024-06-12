@@ -150,11 +150,16 @@ class IntensiveReader(BaseReader):
         # Threshold-based Answerable Verification (TAV)
         if len(predictions) not in [2, 3]:
             raise ValueError(
-                "`predictions` should be a tuple with two elements (start_logits, end_logits)."
+                "`predictions` should be a tuple with two elements (start_logits, end_logits) or three elements (start_logits, end_logits, choice_logits)."
             )
         
-        all_start_logits, all_end_logits = predictions
-        all_choice_logits = predictions[2] if len(predictions) == 3 else None
+        if len(predictions) == 3:
+            all_start_logits, all_end_logits, all_choice_logits = predictions
+        else:
+            all_start_logits, all_end_logits = predictions
+            all_choice_logits = None
+            
+        # all_choice_logits = predictions[2] if len(predictions) == 3 else None
 
         # Build a map example to its corresponding features.
         example_id_to_index = {k: i for i, k in enumerate(examples[C.ID_COLUMN_NAME])}
@@ -212,7 +217,7 @@ class IntensiveReader(BaseReader):
                     
                 # Go through all possibilities for the {top k} greater start and end logits
                 start_indexes = np.argsort(start_logits)[-1: -n_best_size - 1: -1].tolist()
-                end_indexes = np.argsort(end_logits)[-1, -n_best_size - 1: -1].tolist()
+                end_indexes = np.argsort(end_logits)[-1: -n_best_size - 1: -1].tolist()
                 for start_index in start_indexes:
                     for end_index in end_indexes:
                         # We could hypothetically create invalid predictions, e.g., predict
@@ -477,13 +482,13 @@ class RetroReader:
         )
         sketch_model.to(device)
         
-        # Free sketch weights for transfer learning
-        if retro_args.sketch_model_mode == "finetune":
-            pass
-        else:
-            print("[Sketch] Freezing sketch weights for transfer learning ...")
-            for param in list(sketch_model.parameters())[:-5]:
-                    param.requires_grad_(False)
+        # # Free sketch weights for transfer learning
+        # if retro_args.sketch_model_mode == "finetune":
+        #     pass
+        # else:
+        #     print("[Sketch] Freezing sketch weights for transfer learning ...")
+        #     for param in list(sketch_model.parameters())[:-5]:
+        #             param.requires_grad_(False)
                     
         # Get sketch reader
         sketch_training_args.run_name = sketch_run_name

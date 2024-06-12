@@ -28,8 +28,6 @@ def compute_classification_metric(p: EvalPrediction):
     # Get the predicted class labels and the reference labels
     predictions = p.predictions.argmax(axis=1)
     references = p.label_ids    
-    print(predictions, references)
-    
     
     # Initialize the metric object
     metric = accuracy(predictions=predictions, references=references)
@@ -58,5 +56,5 @@ def compute_squad_v2(p: EvalPrediction):
     references = p.label_ids
     
     # Compute and return the SQuAD v2 metrics
-    return squad_v2(predictions, references)
+    return squad_v2(predictions=predictions, references=references)
 
