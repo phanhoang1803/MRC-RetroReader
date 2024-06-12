@@ -439,7 +439,7 @@ class RetroReader:
             use_auth_token=retro_args.use_auth_token,
             revision=retro_args.sketch_revision,
         )
-        sketch_tokenizer.to(device)
+        # sketch_tokenizer.to(device)
         
         # If `train_examples` is feeded, perform preprocessing
         if train_examples is not None and sketch_train_dataset is None:
@@ -506,7 +506,7 @@ class RetroReader:
             use_auth_token=retro_args.use_auth_token,
             revision=retro_args.intensive_revision,
         )
-        intensive_tokenizer.to(device)
+        # intensive_tokenizer.to(device)
         
         # If `train_examples` is feeded, perform preprocessing
         if train_examples is not None and intensive_train_dataset is None:
