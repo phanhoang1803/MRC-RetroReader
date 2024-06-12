@@ -642,20 +642,35 @@ class RetroReader:
                     # Reset the initialized flag
                     callback._initialized = False
        
+        print(f"Starting training for module: {module}")
         # Train sketch reader
         if module.lower() in ["all", "sketch"]:
+            print("Training sketch reader")
             self.sketch_reader.train()
+            
+            print("Saving sketch reader")
             self.sketch_reader.save_model()
+            print("Saving sketch reader state")
             self.sketch_reader.save_state()
+            
             self.sketch_reader.free_memory()
             wandb_finish(self.sketch_reader)
+            print("Sketch reader training finished")
         # Train intensive reader
         if module.lower() in ["all", "intensive"]:
+            print("Training intensive reader")
             self.intensive_reader.train()
+            
+            print("Saving intensive reader")
             self.intensive_reader.save_model()
+            
+            print("Saving intensive reader state")
             self.intensive_reader.save_state()
+            
             self.intensive_reader.free_memory()
             wandb_finish(self.intensive_reader)
+            print("Intensive reader training finished")
+        print("Training finished")
             
     def inference(self, predict_examples: datasets.Dataset, return_submodule_outputs: bool = False) -> Tuple[Any]:
         """

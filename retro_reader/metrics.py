@@ -2,17 +2,15 @@ import datasets
 import evaluate
 from transformers.trainer_utils import EvalPrediction
 
-accuracy = evaluate.load("accuracy")
-precision = evaluate.load("precision")
-recall = evaluate.load("recall")
-f1 = evaluate.load("f1")
-squad_v2 = evaluate.load("squad_v2")
+accuracy = evaluate.load("accuracy").compute
+precision = evaluate.load("precision").compute
+recall = evaluate.load("recall").compute
+f1 = evaluate.load("f1").compute
+squad_v2 = evaluate.load("squad_v2").compute
 # precision = datasets.load_metric("precision").compute
 # recall = datasets.load_metric("recall").compute
 # f1 = datasets.load_metric("f1").compute
 # squad_v2 = datasets.load_metric("squad_v2").compute
-
-
 
 def compute_classification_metric(p: EvalPrediction):
     """

@@ -96,6 +96,9 @@ def main(args):
     #       and `is_impossible`. The remaining columns are columns that exist to 
     #       process other types of data.
     
+    # Minize the dataset for debugging
+    squad_v2["train"] = squad_v2["train"].select(range(1000))
+    
     print("Integrating into the schema used in this library ...")
     squad_v2 = squad_v2.map(
         schema_integrate, 
@@ -135,6 +138,9 @@ def main(args):
         config_file=args.configs,
         device="cuda" if torch.cuda.is_available() else "cpu",
     )
+    if args.resume_checkpoint:
+        retro_reader = retro_reader.load_checkpoint(args.resume_checkpoint)
+    
     # Train
     print("Training ...")
     retro_reader.train()
@@ -143,7 +149,8 @@ def main(args):
     
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--configs", "-c", type=str, default="configs/train_en_electra_large.yaml", help="config file path")
-    parser.add_argument("--batch_size", "-b", type=int, default=32, help="batch size")
+    parser.add_argument("--configs", "-c", type=str, default="configs/train_distilbert.yaml", help="config file path")
+    parser.add_argument("--batch_size", "-b", type=int, default=1024, help="batch size")
+    parser.add_argument("--resume_checkpoint", "-r", type=str, default=None, help="resume checkpoint path")
     args = parser.parse_args()
     main(args)
