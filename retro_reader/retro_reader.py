@@ -467,7 +467,7 @@ class RetroReader:
         
         # Get model for sketch reader
         sketch_model_cls = retro_args.sketch_model_cls
-        print(f"Loading sketch model from {retro_args.sketch_model_name} ...")
+        print(f"[Sketch] Loading sketch model from {retro_args.sketch_model_name} ...")
         sketch_model = sketch_model_cls.from_pretrained(
             pretrained_model_name_or_path=retro_args.sketch_model_name,
             use_auth_token=retro_args.use_auth_token,
@@ -478,7 +478,7 @@ class RetroReader:
         if retro_args.sketch_freeze_layers == "none":
             pass
         else:
-            print("Freezing sketch weights ...")
+            print("[Sketch] Freezing sketch weights ...")
             for name, param in sketch_model.named_parameters():
                 if retro_args.sketch_freeze_layers in name:
                     param.requires_grad_(False)
@@ -498,7 +498,7 @@ class RetroReader:
             compute_metrics=compute_classification_metric,
         )
         
-        print(f"Loading intensive tokenizer from {retro_args.intensive_tokenizer_name} ...")
+        print(f"[Intensive] Loading intensive tokenizer from {retro_args.intensive_tokenizer_name} ...")
         intensive_tokenizer = AutoTokenizer.from_pretrained(
             pretrained_model_name_or_path=retro_args.intensive_tokenizer_name,
             use_auth_token=retro_args.use_auth_token,
@@ -533,7 +533,7 @@ class RetroReader:
         
         # Get model for intensive reader
         intensive_model_cls = retro_args.intensive_model_cls
-        print(f"Loading intensive model from {retro_args.intensive_model_name} ...")
+        print(f"[Intensive] Loading intensive model from {retro_args.intensive_model_name} ...")
         intensive_model = intensive_model_cls.from_pretrained(
             pretrained_model_name_or_path=retro_args.intensive_model_name,
             use_auth_token=retro_args.use_auth_token,
@@ -544,7 +544,7 @@ class RetroReader:
         if retro_args.intensive_freeze_layers == "none":
             pass
         else:
-            print("Freezing intensive weights ...")
+            print("[Intensive] Freezing intensive weights ...")
             for name, param in intensive_model.named_parameters():
                 if retro_args.intensive_freeze_layers in name:
                     param.requires_grad_(False)

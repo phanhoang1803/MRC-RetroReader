@@ -38,14 +38,14 @@ TrainingArguments:
     learning_rate: 2e-5
     evaluation_strategy: epoch
     save_strategy: epoch
-    # per_device_train_batch_size: 12
-    # per_device_eval_batch_size: 12
-    per_device_train_batch_size: 8
-    per_device_eval_batch_size: 8
+    per_device_train_batch_size: 12
+    per_device_eval_batch_size: 12
+    # per_device_train_batch_size: 8
+    # per_device_eval_batch_size: 8
     num_train_epochs: 10.0
     save_steps: 5000
     save_total_limit: 2
-    no_cuda: False
+    # no_cuda: False
     fp16: True
     warmup_ratio: 0.1
     weight_decay: 0.01
