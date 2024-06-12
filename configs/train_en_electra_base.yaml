@@ -21,25 +21,27 @@ RetroDataModelArguments:
     
     # SketchModelArguments
     sketch_model_name: google/electra-base-discriminator
+    sketch_freeze_layers: electra
     sketch_architectures: ElectraForSequenceClassification
     
     # IntensiveModelArguments
     intensive_model_name: google/electra-base-discriminator
+    intensive_freeze_layers: electra
     intensive_architectures: ElectraForQuestionAnsweringAVPool
     
 
 TrainingArguments:
     report_to: wandb
-    run_name: squadv2-electra-large-sketch,squadv2-electra-large-intensive
+    run_name: squadv2-electra-base-sketch,squadv2-electra-base-intensive
     output_dir: outputs
     overwrite_output_dir: False
     learning_rate: 2e-5
     evaluation_strategy: epoch
     save_strategy: epoch
-    # per_device_train_batch_size: 12
-    # per_device_eval_batch_size: 12
-    per_device_train_batch_size: 8
-    per_device_eval_batch_size: 8
+    per_device_train_batch_size: 12
+    per_device_eval_batch_size: 12
+    # per_device_train_batch_size: 8
+    # per_device_eval_batch_size: 8
     num_train_epochs: 10.0
     save_steps: 5000
     save_total_limit: 2
