@@ -482,7 +482,7 @@ class RetroReader:
             pass
         else:
             print("[Sketch] Freezing sketch weights for transfer learning ...")
-            for param in list(sketch_model.parameters())[-5:]:
+            for param in list(sketch_model.parameters())[:-5]:
                     param.requires_grad_(False)
                     
         # Get sketch reader
@@ -549,7 +549,7 @@ class RetroReader:
             pass
         else:
             print("[Intensive] Freezing intensive weights for transfer learning ...")
-            for param in list(intensive_model.parameters())[-5:]:
+            for param in list(intensive_model.parameters())[:-5]:
                     param.requires_grad_(False)
             
         # Get intensive reader
