@@ -16,19 +16,19 @@ from .modeling_outputs import (
 )
 
 class DistilBertForSequenceClassification(SeqClassification):
-    model_type = "DistilBert"
+    model_type = "distilbert"
     
 class DistilBertForQuestionAnsweringAVPool(DistilBertPreTrainedModel):
     config_class = DistilBertConfig
-    base_model_prefix = "DistilBert"
-    model_type = "DistilBert"
+    base_model_prefix = "distilbert"
+    model_type = "distilbert"
     
     def __init__(self, config):
         # super(DistilBertForQuestionAnsweringAVPool, self).__init__(config)
         super().__init__(config)
         self.num_labels = config.num_labels
         
-        self.DistilBert = DistilBertModel(config)
+        self.distilbert = DistilBertModel(config)
         self.qa_outputs = nn.Linear(config.hidden_size, config.num_labels)
         self.has_ans = nn.Sequential(
             # nn.Dropout(p=config.hidden_dropout_prob),
@@ -56,7 +56,7 @@ class DistilBertForQuestionAnsweringAVPool(DistilBertPreTrainedModel):
         return_dict = return_dict if return_dict is not None else self.config.use_return_dict
         
         # outputs shape: (loss(optional, returned when labels is provided, else None), logits, hidden states, attentions)
-        discriminator_hidden_states = self.DistilBert(
+        discriminator_hidden_states = self.distilbert(
             input_ids=input_ids,
             attention_mask=attention_mask,
             token_type_ids=token_type_ids,

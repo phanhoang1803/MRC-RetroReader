@@ -25,7 +25,7 @@ RetroDataModelArguments:
     sketch_architectures: DistilBertForSequenceClassification
     
     # IntensiveModelArguments
-    intensive_model_name: distilbert/distilbert-base-uncased
+    intensive_model_name: distilbert-base-uncased
     intensive_model_mode: transfer
     intensive_architectures: DistilBertForQuestionAnsweringAVPool
     
