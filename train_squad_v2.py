@@ -97,7 +97,7 @@ def main(args):
     #       process other types of data.
     
     # Minize the dataset for debugging
-    if not args.not_debug:
+    if args.debug:
         squad_v2["train"] = squad_v2["train"].select(range(5))
         squad_v2["validation"] = squad_v2["validation"].select(range(5))
     
@@ -155,6 +155,6 @@ if __name__ == "__main__":
     parser.add_argument("--batch_size", "-b", type=int, default=1024, help="batch size")
     parser.add_argument("--resume_checkpoint", "-r", type=str, default=None, help="resume checkpoint path")
     parser.add_argument("--module", "-m", type=str, default="all", help="module to train")
-    parser.add_argument("--not_debug", "-d", action="store_true", help="debug mode")
+    parser.add_argument("--debug", "-d", action="store_true", help="debug mode")
     args = parser.parse_args()
     main(args)

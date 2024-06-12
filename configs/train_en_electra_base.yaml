@@ -37,7 +37,7 @@ TrainingArguments:
     overwrite_output_dir: False
     learning_rate: 2e-5
     evaluation_strategy: epoch
-    save_strategy: epoch
+    save_strategy: steps
     per_device_train_batch_size: 12
     per_device_eval_batch_size: 12
     # per_device_train_batch_size: 8
@@ -49,6 +49,6 @@ TrainingArguments:
     fp16: True
     warmup_ratio: 0.1
     weight_decay: 0.01
-    load_best_model_at_end: True
-    metric_for_best_model: f1,exact
+    # load_best_model_at_end: True
+    # metric_for_best_model: f1,exact
     logging_dir: logs
