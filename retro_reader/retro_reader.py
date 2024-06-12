@@ -443,6 +443,7 @@ class RetroReader:
             pretrained_model_name_or_path=retro_args.sketch_tokenizer_name,
             use_auth_token=retro_args.use_auth_token,
             revision=retro_args.sketch_revision,
+            return_tensors='pt',
         )
         # sketch_tokenizer.to(device)
         
@@ -510,6 +511,7 @@ class RetroReader:
             pretrained_model_name_or_path=retro_args.intensive_tokenizer_name,
             use_auth_token=retro_args.use_auth_token,
             revision=retro_args.intensive_revision,
+            return_tensors='pt',
         )
         # intensive_tokenizer.to(device)
         
