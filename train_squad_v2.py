@@ -97,8 +97,9 @@ def main(args):
     #       process other types of data.
     
     # Minize the dataset for debugging
-    squad_v2["train"] = squad_v2["train"].select(range(5))
-    squad_v2["validation"] = squad_v2["validation"].select(range(5))
+    if not args.not_debug:
+        squad_v2["train"] = squad_v2["train"].select(range(5))
+        squad_v2["validation"] = squad_v2["validation"].select(range(5))
     
     print("Integrating into the schema used in this library ...")
     squad_v2 = squad_v2.map(
@@ -154,5 +155,6 @@ if __name__ == "__main__":
     parser.add_argument("--batch_size", "-b", type=int, default=1024, help="batch size")
     parser.add_argument("--resume_checkpoint", "-r", type=str, default=None, help="resume checkpoint path")
     parser.add_argument("--module", "-m", type=str, default="all", help="module to train")
+    parser.add_argument("--not_debug", "-d", action="store_true", help="debug mode")
     args = parser.parse_args()
     main(args)
