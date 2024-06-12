@@ -33,8 +33,16 @@ MRC-RetroReader is a machine reading comprehension (MRC) model designed for read
 
 ## Usage
 
-- For notebooks: to running automatically, turn off wandb: ```wandb off``` 
-- To train the model using the SQuAD v2 dataset: ```python train_squad_v2.py --config path-to-yaml-file```
+- For notebooks: to running automatically, turn off wandb, warning if necessary:
+```
+wandb off
+import warnings
+warnings.filterwarnings('ignore')
+``` 
+- To train the model using the SQuAD v2 dataset:
+```
+python train_squad_v2.py --config path-to-yaml-file
+```
 
 ## Features
 
