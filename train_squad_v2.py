@@ -111,6 +111,8 @@ def main(args):
     logger.warning(f"Number of unanswerable sample for SQuAD v2.0 validation dataset: {num_unanswerable_valid}")
     # Train data augmentation for multiple answers
     # no answer {"text": [], "answer_start": [-1]} -> {"text": [], "answer_start": []}
+    
+    print("Data augmentation for multiple answers ...")
     squad_v2_train = squad_v2["train"].map(
         data_aug_for_multiple_answers,
         batched=True,
@@ -126,12 +128,14 @@ def main(args):
     #           make train/eval dataset from examples
     #           load model from 🤗 hub
     #           set sketch/intensive reader and rear verifier
+    print("Loading Retro Reader ...")
     retro_reader = RetroReader.load(
         train_examples=squad_v2["train"],
         eval_examples=squad_v2["validation"],
         config_file=args.configs,
     )
     # Train
+    print("Training ...")
     retro_reader.train()
     logger.warning("Train retrospective reader Done.")
     
