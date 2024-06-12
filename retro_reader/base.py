@@ -236,7 +236,7 @@ class BaseReader(Trainer, ToMixin):
                 writer.write(f"{key} = {metrics[key]}\n")
             writer.write("\n")
             
-        if DebugOption.TPU_METRICS_DEBUG:
+        if DebugOption.TPU_METRICS_DEBUG and is_torch_xla_available():
             # Log debug metrics for PyTorch/XLA
             xm.master_print(met.metrics_report())
         
