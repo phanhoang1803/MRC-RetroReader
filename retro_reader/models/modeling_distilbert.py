@@ -98,12 +98,20 @@ class DistilBertForQuestionAnsweringAVPool(DistilBertPreTrainedModel):
             # start_positions.clamp_(0, ignored_index)
             # end_positions.clamp_(0, ignored_index)
             # is_impossibles.clamp_(0, ignored_index)
-            start_positions = start_positions.clamp(0, start_logits.size(1)).long()
-            end_positions = end_positions.clamp(0, end_logits.size(1)).long()
-            is_impossibles = is_impossibles.clamp(0, start_logits.size(1)).long()
+            
+            # Squeeze tensors to remove unnecessary dimensions
+            start_positions = start_positions.squeeze(-1) if start_positions.dim() > 1 else start_positions
+            end_positions = end_positions.squeeze(-1) if end_positions.dim() > 1 else end_positions
+            is_impossibles = is_impossibles.squeeze(-1) if is_impossibles.dim() > 1 else is_impossibles
+            
+            # Clamp positions directly
+            ignored_index = start_logits.size(1)
+            start_positions = torch.clamp(start_positions, 0, ignored_index)
+            end_positions = torch.clamp(end_positions, 0, ignored_index)
+            is_impossibles = torch.clamp(is_impossibles, 0, ignored_index)
             
             # loss_fct = CrossEntropyLoss(ignore_index=ignored_index)
-            loss_fct = CrossEntropyLoss(ignore_index=start_logits.size(1))
+            loss_fct = CrossEntropyLoss(ignore_index=ignored_index)
             start_loss = loss_fct(start_logits, start_positions)
             end_loss = loss_fct(end_logits, end_positions)
             span_loss = start_loss + end_loss
