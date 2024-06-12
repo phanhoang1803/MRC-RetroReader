@@ -416,6 +416,7 @@ class RetroReader:
         sketch_eval_dataset=None,
         intensive_eval_dataset=None,
         config_file: str = C.DEFAULT_CONFIG_FILE,
+        device: str = "cpu",
     ):
         # Get arguments from yaml files
         parser = HfArgumentParser([RetroArguments, TrainingArguments])
@@ -438,6 +439,7 @@ class RetroReader:
             use_auth_token=retro_args.use_auth_token,
             revision=retro_args.sketch_revision,
         )
+        sketch_tokenizer.to(device)
         
         # If `train_examples` is feeded, perform preprocessing
         if train_examples is not None and sketch_train_dataset is None:
@@ -473,7 +475,8 @@ class RetroReader:
             use_auth_token=retro_args.use_auth_token,
             revision=retro_args.sketch_revision,
         )
-
+        sketch_model.to(device)
+        
         # Free sketch weights for transfer learning
         if retro_args.sketch_model_mode == "finetune":
             pass
@@ -503,6 +506,7 @@ class RetroReader:
             use_auth_token=retro_args.use_auth_token,
             revision=retro_args.intensive_revision,
         )
+        intensive_tokenizer.to(device)
         
         # If `train_examples` is feeded, perform preprocessing
         if train_examples is not None and intensive_train_dataset is None:
@@ -538,6 +542,7 @@ class RetroReader:
             use_auth_token=retro_args.use_auth_token,
             revision=retro_args.intensive_revision,
         )
+        intensive_model.to(device)
         
         # Free intensive weights for transfer learning
         if retro_args.intensive_model_mode == "finetune":
@@ -639,7 +644,6 @@ class RetroReader:
        
         # Train sketch reader
         if module.lower() in ["all", "sketch"]:
-            self.sketch_reader.to(device)
             self.sketch_reader.train()
             self.sketch_reader.save_model()
             self.sketch_reader.save_state()
@@ -647,7 +651,6 @@ class RetroReader:
             wandb_finish(self.sketch_reader)
         # Train intensive reader
         if module.lower() in ["all", "intensive"]:
-            self.intensive_reader.to(device)
             self.intensive_reader.train()
             self.intensive_reader.save_model()
             self.intensive_reader.save_state()

@@ -16,8 +16,6 @@ from retro_reader import RetroReader
 from retro_reader.constants import EXAMPLE_FEATURES
 import torch
 
-device = "cuda" if torch.cuda.is_available() else "cpu"
-
 # Will error if the minimal version of Transformers is not installed. Remove at your own risks.
 check_min_version("4.13.0.dev0")
 
@@ -135,10 +133,11 @@ def main(args):
         train_examples=squad_v2["train"],
         eval_examples=squad_v2["validation"],
         config_file=args.configs,
+        device="cuda" if torch.cuda.is_available() else "cpu",
     )
     # Train
     print("Training ...")
-    retro_reader.train(device=device)
+    retro_reader.train()
     logger.warning("Train retrospective reader Done.")
     
     
