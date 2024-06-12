@@ -6,7 +6,7 @@ RetroDataModelArguments:
     doc_stride: 128
     return_token_type_ids: True
     pad_to_max_length: True
-    preprocessing_num_workers: 5
+    preprocessing_num_workers: 4
     overwrite_cache: False
     version_2_with_negative: True
     null_score_diff_threshold: 0.0
@@ -31,7 +31,7 @@ RetroDataModelArguments:
     
 
 TrainingArguments:
-    report_to: wandb
+    # report_to: wandb
     run_name: squadv2-distilbert-base-sketch,squadv2-distilbert-base-intensive
     output_dir: outputs
     overwrite_output_dir: False

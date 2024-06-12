@@ -1,0 +1,61 @@
+{
+    "os": "Windows-10-10.0.22631-SP0",
+    "python": "3.10.11",
+    "heartbeatAt": "2024-06-12T19:56:42.179710",
+    "startedAt": "2024-06-12T19:56:40.832441",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "--configs",
+        "configs/train_en_electra_base.yaml",
+        "--module",
+        "intensive",
+        "--batch_size",
+        "2",
+        "--debug"
+    ],
+    "state": "running",
+    "program": "F:\\Year3_Term2\\StatisticalLearning\\MachineReadingComprehension\\train_squad_v2.py",
+    "codePathLocal": "train_squad_v2.py",
+    "codePath": "train_squad_v2.py",
+    "git": {
+        "remote": "https://github.com/phanhoang1803/MRC-RetroReader.git",
+        "commit": "619ed63ae1580156080fbb130fbd4e7a4ca7b7f9"
+    },
+    "email": "phanhoang1803@gmail.com",
+    "root": "F:/Year3_Term2/StatisticalLearning/MachineReadingComprehension",
+    "host": "HoangUS",
+    "username": "phanh",
+    "executable": "C:\\Users\\phanh\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+    "cpu_count": 6,
+    "cpu_count_logical": 12,
+    "cpu_freq": {
+        "current": 3000.0,
+        "min": 0.0,
+        "max": 3000.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 3000.0,
+            "min": 0.0,
+            "max": 3000.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 99.99999618530273,
+            "used": 87.4122428894043
+        }
+    },
+    "gpu": "NVIDIA GeForce GTX 1650 Ti",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce GTX 1650 Ti",
+            "memory_total": 4294967296
+        }
+    ],
+    "memory": {
+        "total": 15.372379302978516
+    }
+}

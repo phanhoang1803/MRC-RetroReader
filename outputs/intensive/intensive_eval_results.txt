@@ -1,0 +1,16 @@
+***** Eval results *****
+2024-06-13 02:57:20.310966epoch = 4.0
+eval_HasAns_exact = 0.0
+eval_HasAns_f1 = 0.0
+eval_HasAns_total = 5
+eval_best_exact = 0.0
+eval_best_exact_thresh = 0.0
+eval_best_f1 = 0.0
+eval_best_f1_thresh = 0.0
+eval_exact = 0.0
+eval_f1 = 0.0
+eval_runtime = 4.4682
+eval_samples_per_second = 1.119
+eval_steps_per_second = 0.224
+eval_total = 5
+
