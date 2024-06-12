@@ -86,20 +86,24 @@ class DistilBertForQuestionAnsweringAVPool(DistilBertPreTrainedModel):
             and is_impossibles is not None
         ):
             # If we are on multi-GPU, split add a dimension
-            if len(start_positions.size()) > 1:
-                start_positions = start_positions.squeeze(-1)
-            if len(end_positions.size()) > 1:
-                end_positions = end_positions.squeeze(-1)
-            if len(is_impossibles.size()) > 1:
-                is_impossibles = is_impossibles.squeeze(-1)
+            # if len(start_positions.size()) > 1:
+            #     start_positions = start_positions.squeeze(-1)
+            # if len(end_positions.size()) > 1:
+            #     end_positions = end_positions.squeeze(-1)
+            # if len(is_impossibles.size()) > 1:
+            #     is_impossibles = is_impossibles.squeeze(-1)
             
-            # sometimes the start/end positions are outside our model inputs, we ignore these terms
-            ignored_index = start_logits.size(1)
-            start_positions.clamp_(0, ignored_index)
-            end_positions.clamp_(0, ignored_index)
-            is_impossibles.clamp_(0, ignored_index)
+            # # sometimes the start/end positions are outside our model inputs, we ignore these terms
+            # ignored_index = start_logits.size(1)
+            # start_positions.clamp_(0, ignored_index)
+            # end_positions.clamp_(0, ignored_index)
+            # is_impossibles.clamp_(0, ignored_index)
+            start_positions = start_positions.clamp(0, start_logits.size(1)).long()
+            end_positions = end_positions.clamp(0, end_logits.size(1)).long()
+            is_impossibles = is_impossibles.clamp(0, start_logits.size(1)).long()
             
-            loss_fct = CrossEntropyLoss(ignore_index=ignored_index)
+            # loss_fct = CrossEntropyLoss(ignore_index=ignored_index)
+            loss_fct = CrossEntropyLoss(ignore_index=start_logits.size(1))
             start_loss = loss_fct(start_logits, start_positions)
             end_loss = loss_fct(end_logits, end_positions)
             span_loss = start_loss + end_loss
