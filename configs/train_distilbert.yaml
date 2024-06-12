@@ -48,6 +48,7 @@ TrainingArguments:
     per_device_eval_batch_size: 12
     num_train_epochs: 10.0
     # no need to specify metric_for_best_model for resuming from checkpoints
+    no_cuda: False
     fp16: True
     warmup_ratio: 0.1
     weight_decay: 0.01
