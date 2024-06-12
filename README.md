@@ -41,7 +41,7 @@ warnings.filterwarnings('ignore')
 ``` 
 - To train the model using the SQuAD v2 dataset:
 ```
-python train_squad_v2.py --config path-to-yaml-file --module intensive --batch_size
+python train_squad_v2.py --config path-to-yaml-file --module intensive --batch_size batch_size
 ```
 
 ## Features
