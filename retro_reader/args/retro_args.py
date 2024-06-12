@@ -187,7 +187,7 @@ class IntensiveModelArguments(ModelArguments):
             "help": "The name of the pretrained intensive tokenizer."
         },
     )
-    intensive_achitectures: str = field(
+    intensive_architectures: str = field(
         default="ElectraForQuestionAnsweringAVPool",
         metadata={
             "help": ""
@@ -208,7 +208,7 @@ class RetroArguments(DataArguments, SketchModelArguments, IntensiveModelArgument
             self.sketch_tokenizer_name = self.sketch_model_name
             
         # Intensive
-        model_cls = getattr(models, self.intensive_achitectures, None)
+        model_cls = getattr(models, self.intensive_architectures, None)
         if model_cls is None:
             raise AttributeError
         self.intensive_model_cls = model_cls
