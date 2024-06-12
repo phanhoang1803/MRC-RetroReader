@@ -21,12 +21,12 @@ RetroDataModelArguments:
     
     # SketchModelArguments
     sketch_model_name: google/electra-base-discriminator
-    sketch_freeze_layers: electra
+    sketch_model_mode: transfer
     sketch_architectures: ElectraForSequenceClassification
     
     # IntensiveModelArguments
     intensive_model_name: google/electra-base-discriminator
-    intensive_freeze_layers: electra
+    intensive_model_mode: transfer
     intensive_architectures: ElectraForQuestionAnsweringAVPool
     
 

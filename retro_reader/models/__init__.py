@@ -3,3 +3,8 @@ from .modeling_electra import (
     ElectraForSequenceClassification,
     ElectraForQuestionAnsweringAVPool
 )
+from .modeling_distilbert import (
+    DistilBertConfig,
+    DistilBertForSequenceClassification,
+    DistilBertForQuestionAnsweringAVPool
+)

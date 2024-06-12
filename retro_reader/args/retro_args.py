@@ -141,10 +141,10 @@ class SketchModelArguments(ModelArguments):
             "help": "The name of the pretrained sketch model."
         },
     )
-    sketch_freeze_layers: str = field(
-        default="none",
+    sketch_model_mode: str = field(
+        default="finetune",
         metadata={
-            "help": "Choices = ['none', 'keyword that if it appears in the layer name then that layer is frozen']"
+            "help": "Choices = ['finetune', 'transfer']"
         },
     )
     sketch_tokenizer_name: str = field(
@@ -175,10 +175,10 @@ class IntensiveModelArguments(ModelArguments):
             "help": "The name of the pretrained intensive model."
         },
     )
-    intensive_freeze_layers: str = field(
-        default="none",
+    intensive_model_mode: str = field(
+        default="finetune",
         metadata={
-            "help": "Choices = ['none', 'keyword that if it appears in the layer name then that layer is frozen']"
+            "help": "Choices = ['finetune', 'transfer']"
         },
     )
     intensive_tokenizer_name: str = field(

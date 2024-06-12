@@ -25,11 +25,13 @@ RetroDataModelArguments:
     # SketchModelArguments
     sketch_revision: en-electra-large-sketch
     sketch_model_name: jinmang2/retro-reader
+    # sketch_model_mode: transfer
     sketch_architectures: ElectraForSequenceClassification
     
     # IntensiveModelArguments
     intensive_revision: en-electra-largs-intensive
     intensive_model_name: jinmang2/retro-reader
+    # intensive_model_mode: transfer
     intensive_architectures: ElectraForQuestionAnsweringAVPool
     
 

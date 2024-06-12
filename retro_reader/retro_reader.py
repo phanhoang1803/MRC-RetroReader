@@ -475,14 +475,13 @@ class RetroReader:
         )
 
         # Free sketch weights for transfer learning
-        if retro_args.sketch_freeze_layers == "none":
+        if retro_args.sketch_model_mode == "finetune":
             pass
         else:
-            print("[Sketch] Freezing sketch weights ...")
-            for name, param in sketch_model.named_parameters():
-                if retro_args.sketch_freeze_layers in name:
+            print("[Sketch] Freezing sketch weights for transfer learning ...")
+            for param in list(sketch_model.parameters())[-5:]:
                     param.requires_grad_(False)
-
+                    
         # Get sketch reader
         sketch_training_args.run_name = sketch_run_name
         sketch_training_args.output_dir += "/sketch"
@@ -541,12 +540,11 @@ class RetroReader:
         )
         
         # Free intensive weights for transfer learning
-        if retro_args.intensive_freeze_layers == "none":
+        if retro_args.intensive_model_mode == "finetune":
             pass
         else:
-            print("[Intensive] Freezing intensive weights ...")
-            for name, param in intensive_model.named_parameters():
-                if retro_args.intensive_freeze_layers in name:
+            print("[Intensive] Freezing intensive weights for transfer learning ...")
+            for param in list(intensive_model.parameters())[-5:]:
                     param.requires_grad_(False)
             
         # Get intensive reader
@@ -614,7 +612,7 @@ class RetroReader:
         # Perform inference on the predict examples dataset
         return self.inference(predict_examples, return_submodule_outputs=return_submodule_outputs)
     
-    def train(self, module: str = "all"):
+    def train(self, module: str = "all", device: str = "cpu"):
         """
         Trains the specified module.
 
@@ -641,6 +639,7 @@ class RetroReader:
        
         # Train sketch reader
         if module.lower() in ["all", "sketch"]:
+            self.sketch_reader.to(device)
             self.sketch_reader.train()
             self.sketch_reader.save_model()
             self.sketch_reader.save_state()
@@ -648,6 +647,7 @@ class RetroReader:
             wandb_finish(self.sketch_reader)
         # Train intensive reader
         if module.lower() in ["all", "intensive"]:
+            self.intensive_reader.to(device)
             self.intensive_reader.train()
             self.intensive_reader.save_model()
             self.intensive_reader.save_state()
