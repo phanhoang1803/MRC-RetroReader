@@ -32,12 +32,12 @@ def compute_classification_metric(p: EvalPrediction):
     
     
     # Initialize the metric object
-    metric = accuracy(predictions, references)
+    metric = accuracy(predictions=predictions, references=references)
     
     # Update the metric with precision, recall, and f1 score
-    metric.update(precision(predictions, references))
-    metric.update(recall(predictions, references))
-    metric.update(f1(predictions, references))
+    metric.update(precision(predictions=predictions, references=references))
+    metric.update(recall(predictions=predictions, references=references))
+    metric.update(f1(predictions=predictions, references=references))
     
     # Return the metric object
     return metric
