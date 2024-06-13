@@ -21,7 +21,7 @@ RetroDataModelArguments:
     
     # SketchModelArguments
     sketch_model_name: google/electra-base-discriminator
-    sketch_model_mode: transfer
+    # sketch_model_mode: transfer
     sketch_architectures: ElectraForSequenceClassification
     
     # IntensiveModelArguments
