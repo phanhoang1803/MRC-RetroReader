@@ -21,9 +21,9 @@ RetroDataModelArguments:
     
     # SketchModelArguments
     sketch_model_name: google/electra-large-discriminator
-    sketch_model_mode: transfer
+    # sketch_model_mode: transfer
     sketch_architectures: ElectraForSequenceClassification
-
+    
     # IntensiveModelArguments
     intensive_model_name: google/electra-large-discriminator
     intensive_model_mode: transfer
@@ -31,24 +31,24 @@ RetroDataModelArguments:
     
 
 TrainingArguments:
-    report_to: wandb
-    run_name: squadv2-electra-large-sketch,squadv2-electra-large-intensive
+    # report_to: wandb
+    run_name: squadv2-electra-base-sketch,squadv2-electra-base-intensive
     output_dir: outputs
     overwrite_output_dir: False
     learning_rate: 2e-5
     evaluation_strategy: epoch
-    save_strategy: epoch
-    # per_device_train_batch_size: 12
-    # per_device_eval_batch_size: 12
-    per_device_train_batch_size: 8
-    per_device_eval_batch_size: 8
+    save_strategy: steps  # Save checkpoints every specified number of steps
+    # save_steps: 5000  # Save model checkpoints every 5000 steps
+    save_steps: 50
+    save_total_limit: 2  # Maximum number of checkpoints to keep
+    # load_best_model_at_end: True  # Disable to avoid loading the best model at the end
+    # no need to specify checkpoint_dir, it defaults to output_dir
+    # no need to specify logging_dir, it defaults to output_dir
+    per_device_train_batch_size: 512
+    per_device_eval_batch_size: 512
     num_train_epochs: 10.0
-    save_steps: 5000
-    save_total_limit: 2
-    # no_cuda: False
+    # no need to specify metric_for_best_model for resuming from checkpoints
+    no_cuda: False
     fp16: True
     warmup_ratio: 0.1
     weight_decay: 0.01
-    load_best_model_at_end: True
-    metric_for_best_model: f1,exact
-    logging_dir: logs
