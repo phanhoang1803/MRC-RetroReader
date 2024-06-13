@@ -1,0 +1,53 @@
+RetroDataModelArguments:
+
+    # DataArguments
+    max_seq_length: 512
+    max_answer_length: 30
+    doc_stride: 128
+    return_token_type_ids: True
+    pad_to_max_length: True
+    preprocessing_num_workers: 5
+    overwrite_cache: False
+    version_2_with_negative: True
+    null_score_diff_threshold: 0.0
+    rear_threshold: 0.0
+    n_best_size: 20
+    use_choice_logits: False
+    start_n_top: -1
+    end_n_top: -1
+    beta1: 1
+    beta2: 1
+    best_cof: 1
+    
+    # SketchModelArguments
+    sketch_model_name: FacebookAI/roberta-large
+    sketch_architectures: RobertaForSequenceClassification
+    
+    # IntensiveModelArguments
+    intensive_model_name: FacebookAI/roberta-large
+    intensive_model_mode: transfer
+    intensive_architectures: RobertaForQuestionAnsweringAVPool
+    
+
+TrainingArguments:
+    # report_to: wandb
+    run_name: squadv2-roberta-base-sketch,squadv2-roberta-base-intensive
+    output_dir: outputs
+    overwrite_output_dir: False
+    learning_rate: 2e-5
+    evaluation_strategy: epoch
+    save_strategy: steps  # Save checkpoints every specified number of steps
+    # save_steps: 5000  # Save model checkpoints every 5000 steps
+    save_steps: 50
+    save_total_limit: 2  # Maximum number of checkpoints to keep
+    # load_best_model_at_end: True  # Disable to avoid loading the best model at the end
+    # no need to specify checkpoint_dir, it defaults to output_dir
+    # no need to specify logging_dir, it defaults to output_dir
+    per_device_train_batch_size: 512
+    per_device_eval_batch_size: 512
+    num_train_epochs: 10.0
+    # no need to specify metric_for_best_model for resuming from checkpoints
+    no_cuda: False
+    fp16: True
+    warmup_ratio: 0.1
+    weight_decay: 0.01

@@ -8,3 +8,8 @@ from .modeling_distilbert import (
     DistilBertForSequenceClassification,
     DistilBertForQuestionAnsweringAVPool
 )
+from .modeling_roberta import (
+    RobertaConfig,
+    RobertaForSequenceClassification,
+    RobertaForQuestionAnsweringAVPool
+)
