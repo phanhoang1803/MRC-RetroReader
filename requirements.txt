@@ -1,2 +1,4 @@
 evaluate==0.4.2
 wandb
+torch
+transformers
