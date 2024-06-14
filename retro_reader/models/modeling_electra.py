@@ -49,7 +49,47 @@ class ElectraForQuestionAnsweringAVPool(ElectraPreTrainedModel):
         output_hidden_states=None,
         return_dict=None,
         ):
-        
+        """
+        Forward pass of the model for question answering.
+
+        Args:
+            input_ids (torch.Tensor, optional): Indices of input sequence tokens in the vocabulary.
+                Shape: `(batch_size, sequence_length)`.
+            attention_mask (torch.Tensor, optional): Mask to avoid performing attention on padding token indices.
+                Shape: `(batch_size, sequence_length)`.
+            token_type_ids (torch.Tensor, optional): Segment indices to distinguish different sequences in the input.
+                Shape: `(batch_size, sequence_length)`.
+            position_ids (torch.Tensor, optional): Indices of positions of each input sequence token in the position embeddings.
+                Shape: `(batch_size, sequence_length)`.
+            head_mask (torch.Tensor, optional): Mask to nullify selected heads of self-attention modules.
+                Shape: `(num_layers, num_heads)`.
+            inputs_embeds (torch.Tensor, optional): Pretrained embeddings for the input sequence.
+                Shape: `(batch_size, sequence_length, hidden_size)`.
+            start_positions (torch.Tensor, optional): Indices of the start position of the answer span in the input sequence.
+                Shape: `(batch_size,)`.
+            end_positions (torch.Tensor, optional): Indices of the end position of the answer span in the input sequence.
+                Shape: `(batch_size,)`.
+            is_impossibles (torch.Tensor, optional): Boolean tensor indicating whether the answer span is impossible.
+                Shape: `(batch_size,)`.
+            output_attentions (bool, optional): Whether to return the attentions weights of all layers.
+            output_hidden_states (bool, optional): Whether to return the hidden states of all layers.
+            return_dict (bool, optional): Whether to return a `QuestionAnsweringNaModelOutput` object instead of a tuple.
+
+        Returns:
+            torch.Tensor or QuestionAnsweringNaModelOutput: If `return_dict` is `False`, returns a tuple of tensors:
+                - `start_logits`: Logits for start position classification.
+                - `end_logits`: Logits for end position classification.
+                - `has_logits`: Logits for choice classification.
+                - `hidden_states`: Hidden states of all layers.
+                - `attentions`: Attentions weights of all layers.
+            If `return_dict` is `True`, returns a `QuestionAnsweringNaModelOutput` object with the following attributes:
+                - `loss`: Total loss for training.
+                - `start_logits`: Logits for start position classification.
+                - `end_logits`: Logits for end position classification.
+                - `has_logits`: Logits for choice classification.
+                - `hidden_states`: Hidden states of all layers.
+                - `attentions`: Attentions weights of all layers.
+        """
         return_dict = return_dict if return_dict is not None else self.config.use_return_dict
         
         # outputs shape: (loss(optional, returned when labels is provided, else None), logits, hidden states, attentions)

@@ -45,35 +45,55 @@ class SketchReader(BaseReader):
         eval_dataset: datasets.Dataset,
         mode: str = "evaluate",
     ) -> Union[EvalPrediction, Dict[str, float]]:
+        """
+        Postprocess the output of the SketchReader model.
+
+        Args:
+            output (Union[np.ndarray, EvalLoopOutput]): The model output.
+            eval_examples (datasets.Dataset): The evaluation examples.
+            eval_dataset (datasets.Dataset): The evaluation dataset.
+            mode (str, optional): The mode of operation. Defaults to "evaluate".
+
+        Returns:
+            Union[EvalPrediction, Dict[str, float]]: The evaluation prediction or the final map.
+        """
+
         # External Front Verification (E-FV)
+
+        # Extract the logits from the output
         if isinstance(output, EvalLoopOutput):
             logits = output.predictions
         else:
             logits = output
-            
+
+        # Create a mapping from example ID to index
         example_id_to_index = {k: i for i, k in enumerate(eval_examples[C.ID_COLUMN_NAME])}
+
+        # Create a mapping from example index to features
         features_per_example = collections.defaultdict(list)
         for i, feature in enumerate(eval_dataset):
-            features_per_example[example_id_to_index[feature["example_id"]]].append(i) # example_id added from get_sketch_features
-            
+            features_per_example[example_id_to_index[feature["example_id"]]].append(i)  # example_id added from get_sketch_features
+
+        # Create a mapping from example index to the number of features
         count_map = {k: len(v) for k, v in features_per_example.items()}
-        
+
+        # Calculate the average logits for each example
         logits_ans = np.zeros(len(count_map))
-        logits_na  = np.zeros(len(count_map))
+        logits_na = np.zeros(len(count_map))
         for example_index, example in enumerate(tqdm(eval_examples)):
             feature_index = features_per_example[example_index]
             n_strides = count_map[example_index]
             logits_ans[example_index] += logits[example_index, 0] / n_strides
-            logits_na[example_index]  += logits[example_index, 1] / n_strides
-            
-        # Calculate E-VF
+            logits_na[example_index] += logits[example_index, 1] / n_strides
+
+        # Calculate the E-VF score
         score_ext = logits_ans - logits_na
-        
-        # Save EVF score
+
+        # Save the EVF score
         final_map = dict(zip(eval_examples[C.ID_COLUMN_NAME], score_ext.tolist()))
         with open(os.path.join(self.args.output_dir, C.SCORE_EXT_FILE_NAME), "w") as writer:
             writer.write(json.dumps(final_map, indent=4) + "\n")
-        
+
         if mode == "evaluate":
             return EvalPrediction(
                 predictions=logits, label_ids=output.label_ids,
@@ -92,14 +112,25 @@ class IntensiveReader(BaseReader):
         log_level: int = logging.WARNING,
         mode: str = "evaluate",
     ) -> Union[List[Dict[str, Any]], EvalPrediction]:
-        # Internal Front Verification (I-FV)
-        # Verification is already done inside the model
-        # Post-processing: we match the start logits and end logits to answers in the original context.
+        """
+        Post-processing step for the internal front verification (I-FV) and formatting the results.
+
+        Args:
+            output (EvalLoopOutput): The output of the model's evaluation loop.
+            eval_examples (datasets.Dataset): The evaluation examples.
+            eval_dataset (datasets.Dataset): The evaluation dataset.
+            log_level (int, optional): The logging level. Defaults to logging.WARNING.
+            mode (str, optional): The mode of the post-processing. Defaults to "evaluate".
+
+        Returns:
+            Union[List[Dict[str, Any]], EvalPrediction]: The formatted predictions or the evaluation prediction.
+        """
+        # Compute predictions
         predictions, nbest_json, scores_diff_json = self.compute_predictions(
             eval_examples,
             eval_dataset,
             output.predictions,
-            version_2_with_negative = self.data_args.version_2_with_negative,
+            version_2_with_negative=self.data_args.version_2_with_negative,
             n_best_size=self.data_args.n_best_size,
             max_answer_length=self.data_args.max_answer_length,
             null_score_diff_threshold=self.data_args.null_score_diff_threshold,
@@ -107,31 +138,38 @@ class IntensiveReader(BaseReader):
             log_level=log_level,
             n_tops=(self.data_args.start_n_top, self.data_args.end_n_top),
         )
+
+        # Return the nbest_json and scores_diff_json if in retro_inference mode
         if mode == "retro_inference":
             return nbest_json, scores_diff_json
-        
-        # Format the result to the format the metric expects.
+
+        # Format the predictions
         if self.data_args.version_2_with_negative:
             formatted_predictions = [
-                {"id": k, "prediction_text": v, "no_answer_probability": scores_diff_json[k]}
+                {  # type: ignore
+                    "id": k,
+                    "prediction_text": v,
+                    "no_answer_probability": scores_diff_json[k],
+                }
                 for k, v in predictions.items()
             ]
         else:
             formatted_predictions = [
-                {"id": k, "prediction_text": v}
-                for k, v in predictions.items()
+                {"id": k, "prediction_text": v} for k, v in predictions.items()
             ]
-        
+
+        # Return the formatted predictions if in predict mode
         if mode == "predict":
             return formatted_predictions
-        else:
-            references = [
-                {"id": ex[C.ID_COLUMN_NAME], "answers": ex[C.ANSWER_COLUMN_NAME]}
-                for ex in eval_examples
-            ]
-            return EvalPrediction(
-                predictions=formatted_predictions, label_ids=references
-            )
+
+        # Format the evaluation predictions
+        references = [
+            {"id": ex[C.ID_COLUMN_NAME], "answers": ex[C.ANSWER_COLUMN_NAME]}
+            for ex in eval_examples
+        ]
+        return EvalPrediction(
+            predictions=formatted_predictions, label_ids=references
+        )
             
     def compute_predictions(
         self,
@@ -147,7 +185,28 @@ class IntensiveReader(BaseReader):
         n_tops: Tuple[int, int] = (-1, -1),
         use_choice_logits: bool = False,
     ):
-        # Threshold-based Answerable Verification (TAV)
+        """
+        Compute predictions for a given set of examples based on the provided features and model predictions.
+
+        Args:
+            examples (datasets.Dataset): The dataset containing the examples.
+            features (datasets.Dataset): The dataset containing the features.
+            predictions (Tuple[np.ndarray, np.ndarray]): A tuple containing the start logits, end logits, and choice logits.
+            version_2_with_negative (bool, optional): Whether to use version 2 with negative predictions. Defaults to False.
+            n_best_size (int, optional): The number of top predictions to consider. Defaults to 20.
+            max_answer_length (int, optional): The maximum length of the answer. Defaults to 30.
+            null_score_diff_threshold (float, optional): The score difference threshold for the null prediction. Defaults to 0.0.
+            output_dir (Optional[str], optional): The directory to save the predictions. Defaults to None.
+            log_level (Optional[int], optional): The log level. Defaults to logging.WARNING.
+            n_tops (Tuple[int, int], optional): The number of top predictions to consider for each example. Defaults to (-1, -1).
+            use_choice_logits (bool, optional): Whether to use choice logits. Defaults to False.
+
+        Returns:
+            Tuple[Dict[str, str], Dict[str, List[Dict[str, Union[str, float]]]], Dict[str, float]]: A tuple containing the all predictions, all n-best predictions, and scores difference.
+
+        Raises:
+            ValueError: If the length of predictions is not 2 or 3.
+        """
         if len(predictions) not in [2, 3]:
             raise ValueError(
                 "`predictions` should be a tuple with two elements (start_logits, end_logits) or three elements (start_logits, end_logits, choice_logits)."
@@ -355,9 +414,24 @@ class RearVerifier:
         score_ext: Dict[str, float],
         score_diff: Dict[str, float],
         nbest_preds: Dict[str, Dict[int, Dict[str, float]]]
-    ):
+    ) -> Tuple[Dict[str, str], Dict[str, float]]:
+        """
+        This function takes in the score_ext and score_diff dictionaries, and the nbest_preds dictionary.
+        It performs a verification process on the input data and returns the output predictions and scores.
+
+        Args:
+            score_ext (Dict[str, float]): A dictionary containing the extended scores.
+            score_diff (Dict[str, float]): A dictionary containing the score differences.
+            nbest_preds (Dict[str, Dict[int, Dict[str, float]]]): A dictionary containing the nbest predictions.
+
+        Returns:
+            Tuple[Dict[str, str], Dict[str, float]]: A tuple containing the output predictions and scores.
+        """
+        # Initialize an ordered dictionary to store all the scores
         all_scores = collections.OrderedDict()
+        # Check if the keys of score_ext and score_diff are equal
         assert score_ext.keys() == score_diff.keys()
+        # Iterate over the keys in score_ext and calculate the scores
         for key in score_ext.keys():
             if key not in all_scores:
                 all_scores[key] = []
@@ -365,31 +439,24 @@ class RearVerifier:
                 [self.beta1 * score_ext[key],
                  self.beta2 * score_diff[key]]
             )
-        output_scores = {}
-        for key, scores in all_scores.items():
-            mean_score = sum(scores) / float(len(scores))
-            output_scores[key] = mean_score
-            
+        # Calculate the mean score for each key and store it in output_scores
+        output_scores = {key: sum(scores) / float(len(scores)) for key, scores in all_scores.items()}
+        
+        # Initialize an ordered dictionary to store all the nbest predictions
         all_nbest = collections.OrderedDict()
+        # Iterate over the keys in nbest_preds and calculate the nbest predictions
         for key, entries in nbest_preds.items():
             if key not in all_nbest:
                 all_nbest[key] = collections.defaultdict(float)
             for entry in entries:
                 prob = self.best_cof * entry["probability"]
                 all_nbest[key][entry["text"]] += prob
+        # Sort the nbest predictions for each key based on the probability and store the best text in output_predictions
+        output_predictions = {key: sorted(entry_map.keys(), key=lambda x: entry_map[x], reverse=True)[0] for key, entry_map in all_nbest.items()}
         
-        output_predictions = {}
-        for key, entry_map in all_nbest.items():
-            sorted_texts = sorted(
-                entry_map.keys(), key=lambda x: entry_map[x], reverse=True
-            )
-            best_text = sorted_texts[0]
-            output_predictions[key] = best_text
-            
-        for qid in output_predictions.keys():
-            if output_scores[qid] > self.thresh:
-                output_predictions[qid] = ""
-                
+        # If the score for a question is above the threshold, set the prediction to empty string
+        output_predictions = {qid: "" if output_scores[qid] > self.thresh else output_predictions[qid] for qid in output_predictions.keys()}
+        
         return output_predictions, output_scores
     
     
