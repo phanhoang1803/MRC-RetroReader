@@ -45,7 +45,7 @@ TrainingArguments:
     # no need to specify logging_dir, it defaults to output_dir
     per_device_train_batch_size: 12    
     per_device_eval_batch_size: 12
-    num_train_epochs: 10.0
+    num_train_epochs: 2.0
     # no need to specify metric_for_best_model for resuming from checkpoints
     no_cuda: False
     fp16: True
