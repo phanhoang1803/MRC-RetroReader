@@ -25,7 +25,7 @@ def get_sketch_features(
     """
 
     pad_on_right = tokenizer.padding_side == "right"
-    max_seq_length = data_args.max_seq_length
+    max_seq_length = min(data_args.max_seq_length, tokenizer.model_max_length)
     
     def tokenize_fn(examples):
         """
@@ -48,7 +48,7 @@ def get_sketch_features(
             max_length=max_seq_length,
             stride=data_args.doc_stride,
             return_overflowing_tokens=True,
-            return_offsets_mapping=True,
+            return_offsets_mapping=False,
             return_token_type_ids=data_args.return_token_type_ids,
             padding="max_length" if data_args.pad_to_max_length else False,
         )
@@ -236,6 +236,7 @@ def get_intensive_features(
             tokenized_examples["p_mask"] = []
         
         for i, offsets in enumerate(offset_mapping):
+            # We will label impossible answers with the index of the CLS token.
             # Get the input_ids and cls_index for the current example.
             input_ids = tokenized_examples["input_ids"][i]
             cls_index = input_ids.index(tokenizer.cls_token_id)

@@ -81,7 +81,7 @@ class SketchReader(BaseReader):
         logits_ans = np.zeros(len(count_map))
         logits_na = np.zeros(len(count_map))
         for example_index, example in enumerate(tqdm(eval_examples)):
-            feature_index = features_per_example[example_index]
+            feature_indices = features_per_example[example_index]
             n_strides = count_map[example_index]
             logits_ans[example_index] += logits[example_index, 0] / n_strides
             logits_na[example_index] += logits[example_index, 1] / n_strides
@@ -146,7 +146,7 @@ class IntensiveReader(BaseReader):
         # Format the predictions
         if self.data_args.version_2_with_negative:
             formatted_predictions = [
-                {  # type: ignore
+                {
                     "id": k,
                     "prediction_text": v,
                     "no_answer_probability": scores_diff_json[k],
@@ -240,7 +240,7 @@ class IntensiveReader(BaseReader):
             feature_indices = features_per_examples[example_index]
             
             min_null_prediction = None
-            prelim_prediction = []
+            prelim_predictions = []
             
             # Looping through all the features associated to the current example.
             for feature_index in feature_indices:
@@ -302,7 +302,7 @@ class IntensiveReader(BaseReader):
                         ):
                             continue
                         
-                        prelim_prediction.append(
+                        prelim_predictions.append(
                             {
                                 "offsets": (offset_mapping[start_index][0], offset_mapping[end_index][1]),
                                 "score": start_logits[start_index] + end_logits[end_index],
@@ -313,11 +313,11 @@ class IntensiveReader(BaseReader):
             
             if version_2_with_negative:
                 # Add the minimum null prediction
-                prelim_prediction.append(min_null_prediction)
+                prelim_predictions.append(min_null_prediction)
                 null_score = min_null_prediction["score"]
                 
             # Only keep the best `n_best_size` predictions.
-            predictions = sorted(prelim_prediction, key=lambda x: x["score"], reverse=True)[:n_best_size]      
+            predictions = sorted(prelim_predictions, key=lambda x: x["score"], reverse=True)[:n_best_size]      
             
             # Add back the minimum null prediction if it was removed because of its low score
             if version_2_with_negative and not any(p["offsets"] == (0, 0) for p in predictions):
@@ -451,11 +451,25 @@ class RearVerifier:
             for entry in entries:
                 prob = self.best_cof * entry["probability"]
                 all_nbest[key][entry["text"]] += prob
-        # Sort the nbest predictions for each key based on the probability and store the best text in output_predictions
-        output_predictions = {key: sorted(entry_map.keys(), key=lambda x: entry_map[x], reverse=True)[0] for key, entry_map in all_nbest.items()}
+        # # Sort the nbest predictions for each key based on the probability and store the best text in output_predictions
+        # output_predictions = {key: sorted(entry_map.keys(), key=lambda x: entry_map[x], reverse=True)[0] for key, entry_map in all_nbest.items()}
         
+        # # If the score for a question is above the threshold, set the prediction to empty string
+        # output_predictions = {qid: "" if output_scores[qid] > self.thresh else output_predictions[qid] for qid in output_predictions.keys()}
+        
+        # Sort the nbest predictions for each key based on the probability and store the best text in output_predictions
+        output_predictions = {}
+        for key, entry_map in all_nbest.items():
+            sorted_texts = sorted(
+                entry_map.keys(), key=lambda x: entry_map[x], reverse=True
+            )
+            best_text = sorted_texts[0]
+            output_predictions[key] = best_text
+            
         # If the score for a question is above the threshold, set the prediction to empty string
-        output_predictions = {qid: "" if output_scores[qid] > self.thresh else output_predictions[qid] for qid in output_predictions.keys()}
+        for qid in output_predictions.keys():
+            if output_scores[qid] > self.thresh:
+                output_predictions[qid] = ""
         
         return output_predictions, output_scores
     
@@ -510,7 +524,7 @@ class RetroReader:
             pretrained_model_name_or_path=retro_args.sketch_tokenizer_name,
             use_auth_token=retro_args.use_auth_token,
             revision=retro_args.sketch_revision,
-            return_tensors='pt',
+            # return_tensors='pt',
         )
         # sketch_tokenizer.to(device)
         
@@ -578,7 +592,7 @@ class RetroReader:
             pretrained_model_name_or_path=retro_args.intensive_tokenizer_name,
             use_auth_token=retro_args.use_auth_token,
             revision=retro_args.intensive_revision,
-            return_tensors='pt',
+            # return_tensors='pt',
         )
         # intensive_tokenizer.to(device)
         
