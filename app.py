@@ -36,6 +36,7 @@ my_hash_func = {
 
 @st.cache(hash_funcs=my_hash_func, allow_output_mutation=True)
 def load_ko_electra_small_model():
+    print("load_ko_electra_small_model")
     config_file = "configs/inference_electra_base.yaml"
     return RetroReader.load(config_file=config_file)
 

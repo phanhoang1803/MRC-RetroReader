@@ -56,8 +56,7 @@ class DataArguments(RetroDataModelArguments):
     version_2_with_negative: bool = field(
         default=True,
         metadata={
-            "help": "If true, some of the examples do not have an answer."
-            "If false, some of the examples do have an answer."
+            "help": ""
         },
     )
     null_score_diff_threshold: float = field(

@@ -1,642 +1,624 @@
 {
     "56ddde6b9a695914005b9628": [
         {
-            "start_logit": 0.4783366024494171,
-            "end_logit": 1.2513846158981323,
-            "text": ".",
-            "probability": 0.059408772736787796
+            "start_logit": 8.185617446899414,
+            "end_logit": 8.183082580566406,
+            "text": "France",
+            "probability": 0.9997206330299377
         },
         {
-            "start_logit": 0.7402365207672119,
-            "end_logit": 0.95508873462677,
-            "text": ", a region in France.",
-            "probability": 0.057400092482566833
+            "start_logit": -0.7398490309715271,
+            "end_logit": 8.183082580566406,
+            "text": "Normandy, a region in France",
+            "probability": 0.00013292230141814798
         },
         {
-            "start_logit": 0.43081456422805786,
-            "end_logit": 1.2513846158981323,
-            "text": "would gradually merge with the Carolingian-based cultures of West Francia.",
-            "probability": 0.056651584804058075
+            "start_logit": 8.185617446899414,
+            "end_logit": -1.3845276832580566,
+            "text": "France.",
+            "probability": 6.993886199779809e-05
         },
         {
-            "start_logit": 0.3971412479877472,
-            "end_logit": 1.2513846158981323,
-            "text": "gradually merge with the Carolingian-based cultures of West Francia.",
-            "probability": 0.054775696247816086
+            "start_logit": 8.185617446899414,
+            "end_logit": -2.2376389503479004,
+            "text": "France. They were descended from Norse (\"Norman\" comes from \"Norseman\") raiders and pirates from Denmark, Iceland and Norway",
+            "probability": 2.9800052288919687e-05
         },
         {
-            "start_logit": 0.36324572563171387,
-            "end_logit": 1.2513846158981323,
-            "text": "with the Carolingian-based cultures of West Francia.",
-            "probability": 0.05295015498995781
+            "start_logit": 8.185617446899414,
+            "end_logit": -2.29089617729187,
+            "text": "France. They were descended from Norse (\"Norman\" comes from \"Norseman\") raiders and pirates from Denmark",
+            "probability": 2.825448609655723e-05
         },
         {
-            "start_logit": 0.3361624479293823,
-            "end_logit": 1.2513846158981323,
-            "text": ", their descendants would gradually merge with the Carolingian-based cultures of West Francia.",
-            "probability": 0.05153534188866615
+            "start_logit": -4.1688971519470215,
+            "end_logit": 8.183082580566406,
+            "text": "region in France",
+            "probability": 4.309044470574008e-06
         },
         {
-            "start_logit": 0.5788963437080383,
-            "end_logit": 1.0066214799880981,
-            "text": "half of the 10th century, and it continued to evolve over the succeeding centuries.",
-            "probability": 0.05143086984753609
+            "start_logit": -4.3066816329956055,
+            "end_logit": 8.183082580566406,
+            "text": "in France",
+            "probability": 3.754413228307385e-06
         },
         {
-            "start_logit": 0.4783366024494171,
-            "end_logit": 1.0801258087158203,
-            "text": ". The distinct cultural and ethnic identity of the",
-            "probability": 0.050058040767908096
+            "start_logit": 8.185617446899414,
+            "end_logit": -4.421697616577148,
+            "text": "France. They were descended from Norse (\"Norman\" comes from \"Norseman\") raiders and pirates from Denmark, Iceland",
+            "probability": 3.354997488713707e-06
         },
         {
-            "start_logit": 0.7402365207672119,
-            "end_logit": 0.8143458962440491,
-            "text": ", a region in France. They were descended from",
-            "probability": 0.049864184111356735
+            "start_logit": -4.703132152557373,
+            "end_logit": 8.183082580566406,
+            "text": "French: Normands; Latin: Normanni) were the people who in the 10th and 11th centuries gave their name to Normandy, a region in France",
+            "probability": 2.5256060780520784e-06
         },
         {
-            "start_logit": 0.7144542932510376,
-            "end_logit": 0.8143458962440491,
-            "text": "from",
-            "probability": 0.048595014959573746
+            "start_logit": -4.748594760894775,
+            "end_logit": 8.183082580566406,
+            "text": "10th and 11th centuries gave their name to Normandy, a region in France",
+            "probability": 2.4133587430696934e-06
         },
         {
-            "start_logit": 0.43081456422805786,
-            "end_logit": 1.0801258087158203,
-            "text": "would gradually merge with the Carolingian-based cultures of West Francia. The distinct cultural and ethnic identity of the",
-            "probability": 0.0477348156273365
+            "start_logit": -4.918797969818115,
+            "end_logit": 8.183082580566406,
+            "text": "Normanni) were the people who in the 10th and 11th centuries gave their name to Normandy, a region in France",
+            "probability": 2.0356501408969052e-06
         },
         {
-            "start_logit": 0.3382601737976074,
-            "end_logit": 1.1601595878601074,
-            "text": ".",
-            "probability": 0.04714087396860123
+            "start_logit": -0.7398490309715271,
+            "end_logit": -0.8107662200927734,
+            "text": "Normandy",
+            "probability": 1.650512970741147e-08
         },
         {
-            "start_logit": 0.3971412479877472,
-            "end_logit": 1.0801258087158203,
-            "text": "gradually merge with the Carolingian-based cultures of West Francia. The distinct cultural and ethnic identity of the",
-            "probability": 0.04615418240427971
+            "start_logit": -0.7398490309715271,
+            "end_logit": -1.3845276832580566,
+            "text": "Normandy, a region in France.",
+            "probability": 9.299029990472718e-09
         },
         {
-            "start_logit": 0.5788963437080383,
-            "end_logit": 0.8923030495643616,
-            "text": "half of the 10th century, and it continued to",
-            "probability": 0.04587499424815178
+            "start_logit": -1.7324471473693848,
+            "end_logit": -1.1534770727157593,
+            "text": "Denmark, Iceland and Norway who, under their leader Rollo, agreed to swear fealty to King Charles III of West Francia",
+            "probability": 4.342121329159454e-09
         },
         {
-            "start_logit": 0.3867814540863037,
-            "end_logit": 1.0801258087158203,
-            "text": "cultural and ethnic identity of the",
-            "probability": 0.045678507536649704
+            "start_logit": -0.7398490309715271,
+            "end_logit": -2.29089617729187,
+            "text": "Normandy, a region in France. They were descended from Norse (\"Norman\" comes from \"Norseman\") raiders and pirates from Denmark",
+            "probability": 3.756703392809868e-09
         },
         {
-            "start_logit": 0.4579964876174927,
-            "end_logit": 1.0066214799880981,
-            "text": "of the 10th century, and it continued to evolve over the succeeding centuries.",
-            "probability": 0.04557405784726143
-        },
-        {
-            "start_logit": 0.5763289928436279,
-            "end_logit": 0.8729928731918335,
-            "text": "of assimilation and mixing with the native Frankish and Roman-Gaulish populations, their descendants",
-            "probability": 0.044882260262966156
-        },
-        {
-            "start_logit": 0.7144542932510376,
-            "end_logit": 0.7328638434410095,
-            "text": "from Norse (\"Norman\" comes from \"Norseman\") raiders and pirates from Denmark, Iceland and Norway who",
-            "probability": 0.04479241371154785
-        },
-        {
-            "start_logit": 0.36566922068595886,
-            "end_logit": 1.0801258087158203,
-            "text": "and ethnic identity of the",
-            "probability": 0.0447242446243763
-        },
-        {
-            "start_logit": 0.36324572563171387,
-            "end_logit": 1.0801258087158203,
-            "text": "with the Carolingian-based cultures of West Francia. The distinct cultural and ethnic identity of the",
-            "probability": 0.044615987688302994
-        },
-        {
-            "start_logit": -0.11322932690382004,
-            "end_logit": 0.07676650583744049,
+            "start_logit": -1.706205129623413,
+            "end_logit": -1.3758800029754639,
             "text": "",
-            "probability": 0.010157963261008263
+            "probability": 3.568701334444313e-09
+        },
+        {
+            "start_logit": -1.7324471473693848,
+            "end_logit": -2.2376389503479004,
+            "text": "Denmark, Iceland and Norway",
+            "probability": 1.4684381488550002e-09
+        },
+        {
+            "start_logit": -1.7324471473693848,
+            "end_logit": -2.29089617729187,
+            "text": "Denmark",
+            "probability": 1.3922795139009736e-09
+        },
+        {
+            "start_logit": -3.321086883544922,
+            "end_logit": -1.1534770727157593,
+            "text": "Norway who, under their leader Rollo, agreed to swear fealty to King Charles III of West Francia",
+            "probability": 8.866746226132705e-10
+        },
+        {
+            "start_logit": -3.6758716106414795,
+            "end_logit": -1.1534770727157593,
+            "text": "West Francia",
+            "probability": 6.218470183227964e-10
         }
     ],
     "56ddde6b9a695914005b9629": [
         {
-            "start_logit": 0.4725235104560852,
-            "end_logit": 1.2516179084777832,
-            "text": ".",
-            "probability": 0.06062876060605049
+            "start_logit": 8.015799522399902,
+            "end_logit": 8.22436237335205,
+            "text": "10th and 11th centuries",
+            "probability": 0.8789681196212769
         },
         {
-            "start_logit": 0.4301489591598511,
-            "end_logit": 1.2516179084777832,
-            "text": "would gradually merge with the Carolingian-based cultures of West Francia.",
-            "probability": 0.05811332166194916
+            "start_logit": 5.824069499969482,
+            "end_logit": 8.22436237335205,
+            "text": "the 10th and 11th centuries",
+            "probability": 0.09820116311311722
         },
         {
-            "start_logit": 0.7012895345687866,
-            "end_logit": 0.9539246559143066,
-            "text": ", a region in France.",
-            "probability": 0.05659056454896927
+            "start_logit": 3.9962728023529053,
+            "end_logit": 8.22436237335205,
+            "text": "in the 10th and 11th centuries",
+            "probability": 0.015787558630108833
         },
         {
-            "start_logit": 0.396307110786438,
-            "end_logit": 1.2516179084777832,
-            "text": "gradually merge with the Carolingian-based cultures of West Francia.",
-            "probability": 0.05617956444621086
+            "start_logit": 8.015799522399902,
+            "end_logit": 3.142390012741089,
+            "text": "10th and 11th",
+            "probability": 0.005456330720335245
         },
         {
-            "start_logit": 0.35732993483543396,
-            "end_logit": 1.2516179084777832,
-            "text": "with the Carolingian-based cultures of West Francia.",
-            "probability": 0.054031968116760254
+            "start_logit": 5.824069499969482,
+            "end_logit": 3.142390012741089,
+            "text": "the 10th and 11th",
+            "probability": 0.000609598879236728
         },
         {
-            "start_logit": 0.3268931806087494,
-            "end_logit": 1.2516179084777832,
-            "text": ", their descendants would gradually merge with the Carolingian-based cultures of West Francia.",
-            "probability": 0.052412185817956924
+            "start_logit": 0.5775845646858215,
+            "end_logit": 8.22436237335205,
+            "text": "11th centuries",
+            "probability": 0.0005171270458959043
         },
         {
-            "start_logit": 0.5670069456100464,
-            "end_logit": 1.0030895471572876,
-            "text": "half of the 10th century, and it continued to evolve over the succeeding centuries.",
-            "probability": 0.05197301134467125
+            "start_logit": 8.015799522399902,
+            "end_logit": -0.06675378978252411,
+            "text": "10th",
+            "probability": 0.00022038746101316065
         },
         {
-            "start_logit": 0.7012895345687866,
-            "end_logit": 0.8159628510475159,
-            "text": ", a region in France. They were descended from",
-            "probability": 0.04929784685373306
+            "start_logit": 3.9962728023529053,
+            "end_logit": 3.142390012741089,
+            "text": "in the 10th and 11th",
+            "probability": 9.800362022360787e-05
         },
         {
-            "start_logit": 0.4725235104560852,
-            "end_logit": 1.0433578491210938,
-            "text": ". The distinct cultural and ethnic identity of the",
-            "probability": 0.04923030361533165
+            "start_logit": -2.3264777660369873,
+            "end_logit": 8.22436237335205,
+            "text": "centuries",
+            "probability": 2.8338643460301682e-05
         },
         {
-            "start_logit": 0.6965864300727844,
-            "end_logit": 0.8159628510475159,
-            "text": "from",
-            "probability": 0.049066539853811264
+            "start_logit": 5.824069499969482,
+            "end_logit": -0.06675378978252411,
+            "text": "the 10th",
+            "probability": 2.462242446199525e-05
         },
         {
-            "start_logit": 0.4301489591598511,
-            "end_logit": 1.0433578491210938,
-            "text": "would gradually merge with the Carolingian-based cultures of West Francia. The distinct cultural and ethnic identity of the",
-            "probability": 0.047187771648168564
+            "start_logit": 8.015799522399902,
+            "end_logit": -2.3552913665771484,
+            "text": "10th and 11th centuries gave their name to Normandy",
+            "probability": 2.2350530343828723e-05
         },
         {
-            "start_logit": 0.5670069456100464,
-            "end_logit": 0.8980276584625244,
-            "text": "half of the 10th century, and it continued to",
-            "probability": 0.04678967595100403
+            "start_logit": -2.6416571140289307,
+            "end_logit": 8.22436237335205,
+            "text": "and 11th centuries",
+            "probability": 2.067752939183265e-05
         },
         {
-            "start_logit": 0.4522515535354614,
-            "end_logit": 1.0030895471572876,
-            "text": "of the 10th century, and it continued to evolve over the succeeding centuries.",
-            "probability": 0.046338312327861786
+            "start_logit": 8.015799522399902,
+            "end_logit": -2.7319605350494385,
+            "text": "10th and 11th centuries gave their name to Normandy, a region in France",
+            "probability": 1.533566501166206e-05
         },
         {
-            "start_logit": 0.396307110786438,
-            "end_logit": 1.0433578491210938,
-            "text": "gradually merge with the Carolingian-based cultures of West Francia. The distinct cultural and ethnic identity of the",
-            "probability": 0.04561757296323776
+            "start_logit": 8.015799522399902,
+            "end_logit": -3.2462751865386963,
+            "text": "10th and 11th centuries gave their name to Normandy, a region in France.",
+            "probability": 9.169351869786624e-06
         },
         {
-            "start_logit": 0.39071327447891235,
-            "end_logit": 1.0433578491210938,
-            "text": "cultural and ethnic identity of the",
-            "probability": 0.04536310210824013
+            "start_logit": 8.015799522399902,
+            "end_logit": -3.46449875831604,
+            "text": "10th and 11th centuries gave their name to Normandy,",
+            "probability": 7.371661013166886e-06
         },
         {
-            "start_logit": 0.5663515329360962,
-            "end_logit": 0.8653833270072937,
-            "text": "of assimilation and mixing with the native Frankish and Roman-Gaulish populations, their descendants",
-            "probability": 0.04525724798440933
+            "start_logit": 3.9962728023529053,
+            "end_logit": -0.06675378978252411,
+            "text": "in the 10th",
+            "probability": 3.9584824662597384e-06
         },
         {
-            "start_logit": 0.3640506863594055,
-            "end_logit": 1.0433578491210938,
-            "text": "and ethnic identity of the",
-            "probability": 0.0441695898771286
+            "start_logit": 0.5775845646858215,
+            "end_logit": 3.142390012741089,
+            "text": "11th",
+            "probability": 3.2101463602884905e-06
         },
         {
-            "start_logit": 0.35732993483543396,
-            "end_logit": 1.0433578491210938,
-            "text": "with the Carolingian-based cultures of West Francia. The distinct cultural and ethnic identity of the",
-            "probability": 0.04387373477220535
+            "start_logit": 8.015799522399902,
+            "end_logit": -4.531837463378906,
+            "text": "10th and",
+            "probability": 2.5352796910738107e-06
         },
         {
-            "start_logit": 0.5670069456100464,
-            "end_logit": 0.829092264175415,
-            "text": "half of the 10th century, and it continued to evolve over the",
-            "probability": 0.04367287456989288
+            "start_logit": 5.824069499969482,
+            "end_logit": -2.3552913665771484,
+            "text": "the 10th and 11th centuries gave their name to Normandy",
+            "probability": 2.4970761387521634e-06
         },
         {
-            "start_logit": 0.39071327447891235,
-            "end_logit": 1.0030895471572876,
-            "text": "cultural and ethnic identity of the Normans emerged initially in the first half of the 10th century, and it continued to evolve over the succeeding centuries.",
-            "probability": 0.04357270523905754
+            "start_logit": 5.824069499969482,
+            "end_logit": -2.7319605350494385,
+            "text": "the 10th and 11th centuries gave their name to Normandy, a region in France",
+            "probability": 1.713350343379716e-06
         },
         {
-            "start_logit": -0.09257408231496811,
-            "end_logit": 0.07593899965286255,
+            "start_logit": -2.133139133453369,
+            "end_logit": -1.6066420078277588,
             "text": "",
-            "probability": 0.010633325204253197
+            "probability": 1.8483934383084488e-09
         }
     ],
     "56ddde6b9a695914005b962a": [
         {
-            "start_logit": 0.4852913022041321,
-            "end_logit": 1.2613372802734375,
-            "text": ".",
-            "probability": 0.060325365513563156
+            "start_logit": 8.141010284423828,
+            "end_logit": 9.253311157226562,
+            "text": "Denmark, Iceland and Norway",
+            "probability": 0.9992632269859314
         },
         {
-            "start_logit": 0.7224692106246948,
-            "end_logit": 0.9806504845619202,
-            "text": ", a region in France.",
-            "probability": 0.05775696411728859
+            "start_logit": 0.2935892343521118,
+            "end_logit": 9.253311157226562,
+            "text": "from Denmark, Iceland and Norway",
+            "probability": 0.0003904706391040236
         },
         {
-            "start_logit": 0.43410271406173706,
-            "end_logit": 1.2613372802734375,
-            "text": "would gradually merge with the Carolingian-based cultures of West Francia.",
-            "probability": 0.05731510743498802
+            "start_logit": -1.0723212957382202,
+            "end_logit": 9.253311157226562,
+            "text": "Norway",
+            "probability": 9.962790500139818e-05
         },
         {
-            "start_logit": 0.3946422040462494,
-            "end_logit": 1.2613372802734375,
-            "text": "gradually merge with the Carolingian-based cultures of West Francia.",
-            "probability": 0.055097464472055435
+            "start_logit": -1.1280137300491333,
+            "end_logit": 9.253311157226562,
+            "text": "Iceland and Norway",
+            "probability": 9.423103620065376e-05
         },
         {
-            "start_logit": 0.356690913438797,
-            "end_logit": 1.2613372802734375,
-            "text": "with the Carolingian-based cultures of West Francia.",
-            "probability": 0.053045619279146194
+            "start_logit": -1.138727068901062,
+            "end_logit": 9.253311157226562,
+            "text": "raiders and pirates from Denmark, Iceland and Norway",
+            "probability": 9.322688129032031e-05
         },
         {
-            "start_logit": 0.33931055665016174,
-            "end_logit": 1.2613372802734375,
-            "text": ", their descendants would gradually merge with the Carolingian-based cultures of West Francia.",
-            "probability": 0.05213163420557976
+            "start_logit": 8.141010284423828,
+            "end_logit": -1.8796995878219604,
+            "text": "Denmark",
+            "probability": 1.4610824109695386e-05
         },
         {
-            "start_logit": 0.5677844285964966,
-            "end_logit": 1.0050243139266968,
-            "text": "half of the 10th century, and it continued to evolve over the succeeding centuries.",
-            "probability": 0.0507003515958786
+            "start_logit": -3.0149729251861572,
+            "end_logit": 9.253311157226562,
+            "text": "Norse (\"Norman\" comes from \"Norseman\") raiders and pirates from Denmark, Iceland and Norway",
+            "probability": 1.4279007700679358e-05
         },
         {
-            "start_logit": 0.4852913022041321,
-            "end_logit": 1.0800390243530273,
-            "text": ". The distinct cultural and ethnic identity of the",
-            "probability": 0.05032260715961456
+            "start_logit": -3.3746774196624756,
+            "end_logit": 9.253311157226562,
+            "text": ", Iceland and Norway",
+            "probability": 9.965066055883653e-06
         },
         {
-            "start_logit": 0.7501688003540039,
-            "end_logit": 0.8046565651893616,
-            "text": "from",
-            "probability": 0.049796734005212784
+            "start_logit": 8.141010284423828,
+            "end_logit": -2.510784387588501,
+            "text": "Denmark, Iceland and",
+            "probability": 7.773171091685072e-06
         },
         {
-            "start_logit": 0.7224692106246948,
-            "end_logit": 0.8046565651893616,
-            "text": ", a region in France. They were descended from",
-            "probability": 0.048436325043439865
+            "start_logit": 8.141010284423828,
+            "end_logit": -3.313819646835327,
+            "text": "Denmark, Iceland",
+            "probability": 3.4821239296434214e-06
         },
         {
-            "start_logit": 0.43410271406173706,
-            "end_logit": 1.0800390243530273,
-            "text": "would gradually merge with the Carolingian-based cultures of West Francia. The distinct cultural and ethnic identity of the",
-            "probability": 0.04781148582696915
+            "start_logit": -4.894545078277588,
+            "end_logit": 9.253311157226562,
+            "text": "pirates from Denmark, Iceland and Norway",
+            "probability": 2.179768443966168e-06
         },
         {
-            "start_logit": 0.7501688003540039,
-            "end_logit": 0.7570310235023499,
-            "text": "from Norse (\"Norman\" comes from \"Norseman\") raiders and pirates from Denmark, Iceland and Norway who",
-            "probability": 0.04748072847723961
+            "start_logit": -5.005048751831055,
+            "end_logit": 9.253311157226562,
+            "text": "(\"Norman\" comes from \"Norseman\") raiders and pirates from Denmark, Iceland and Norway",
+            "probability": 1.9517267446644837e-06
         },
         {
-            "start_logit": 0.3946422040462494,
-            "end_logit": 1.0800390243530273,
-            "text": "gradually merge with the Carolingian-based cultures of West Francia. The distinct cultural and ethnic identity of the",
-            "probability": 0.04596156254410744
+            "start_logit": 8.141010284423828,
+            "end_logit": -4.0902910232543945,
+            "text": "Denmark,",
+            "probability": 1.6018693713704124e-06
         },
         {
-            "start_logit": 0.39363163709640503,
-            "end_logit": 1.0800390243530273,
-            "text": "cultural and ethnic identity of the",
-            "probability": 0.045915137976408005
+            "start_logit": -5.638904094696045,
+            "end_logit": 9.253311157226562,
+            "text": "and Norway",
+            "probability": 1.0354732467021677e-06
         },
         {
-            "start_logit": 0.5677844285964966,
-            "end_logit": 0.8925597071647644,
-            "text": "half of the 10th century, and it continued to",
-            "probability": 0.04530730098485947
+            "start_logit": 8.141010284423828,
+            "end_logit": -5.265445232391357,
+            "text": "Denmark, Iceland and Norway who,",
+            "probability": 4.94611128942779e-07
         },
         {
-            "start_logit": 0.4533364474773407,
-            "end_logit": 1.0050243139266968,
-            "text": "of the 10th century, and it continued to evolve over the succeeding centuries.",
-            "probability": 0.04521753638982773
-        },
-        {
-            "start_logit": 0.5726048350334167,
-            "end_logit": 0.8778764605522156,
-            "text": "of assimilation and mixing with the native Frankish and Roman-Gaulish populations, their descendants",
-            "probability": 0.044862642884254456
-        },
-        {
-            "start_logit": 0.3609384298324585,
-            "end_logit": 1.0800390243530273,
-            "text": "and ethnic identity of the",
-            "probability": 0.04443829134106636
-        },
-        {
-            "start_logit": 0.356690913438797,
-            "end_logit": 1.0800390243530273,
-            "text": "with the Carolingian-based cultures of West Francia. The distinct cultural and ethnic identity of the",
-            "probability": 0.044249940663576126
-        },
-        {
-            "start_logit": 0.33931055665016174,
-            "end_logit": 1.0800390243530273,
-            "text": ", their descendants would gradually merge with the Carolingian-based cultures of West Francia. The distinct cultural and ethnic identity of the",
-            "probability": 0.04348750784993172
-        },
-        {
-            "start_logit": -0.09994363784790039,
-            "end_logit": 0.08280366659164429,
+            "start_logit": 0.9362407922744751,
+            "end_logit": 1.848432183265686,
             "text": "",
-            "probability": 0.010339631699025631
+            "probability": 4.516376179708459e-07
+        },
+        {
+            "start_logit": 8.141010284423828,
+            "end_logit": -5.478745937347412,
+            "text": "Denmark, Iceland and Norway who, under their leader Rollo, agreed to swear fealty to King Charles III",
+            "probability": 3.9960286812856793e-07
+        },
+        {
+            "start_logit": 8.141010284423828,
+            "end_logit": -5.550581455230713,
+            "text": "Denmark, Iceland and Norway who, under their leader Rollo,",
+            "probability": 3.719043206729111e-07
+        },
+        {
+            "start_logit": 8.141010284423828,
+            "end_logit": -5.628018379211426,
+            "text": "Denmark, Iceland and Norway who",
+            "probability": 3.441918465796334e-07
+        },
+        {
+            "start_logit": 8.141010284423828,
+            "end_logit": -5.629680156707764,
+            "text": "Denmark, Iceland and Norway who, under their leader Rollo, agreed to swear fealty to King Charles III of West Francia",
+            "probability": 3.436202007378597e-07
         }
     ],
     "56ddde6b9a695914005b962b": [
         {
-            "start_logit": 0.47673043608665466,
-            "end_logit": 1.2612593173980713,
-            "text": ".",
-            "probability": 0.059745851904153824
+            "start_logit": 9.056861877441406,
+            "end_logit": 9.2239990234375,
+            "text": "Rollo",
+            "probability": 0.9997552037239075
         },
         {
-            "start_logit": 0.4331676959991455,
-            "end_logit": 1.2612593173980713,
-            "text": "would gradually merge with the Carolingian-based cultures of West Francia.",
-            "probability": 0.057199034839868546
+            "start_logit": -0.6414366960525513,
+            "end_logit": 9.2239990234375,
+            "text": "o",
+            "probability": 6.137283344287425e-05
         },
         {
-            "start_logit": 0.4039287567138672,
-            "end_logit": 1.2612593173980713,
-            "text": "gradually merge with the Carolingian-based cultures of West Francia.",
-            "probability": 0.05555080249905586
+            "start_logit": 9.056861877441406,
+            "end_logit": -0.5106391906738281,
+            "text": "Roll",
+            "probability": 5.9182602853979915e-05
         },
         {
-            "start_logit": 0.6973050832748413,
-            "end_logit": 0.9559361338615417,
-            "text": ", a region in France.",
-            "probability": 0.05489109456539154
+            "start_logit": 9.056861877441406,
+            "end_logit": -0.8831018209457397,
+            "text": "Rollo,",
+            "probability": 4.07789193559438e-05
         },
         {
-            "start_logit": 0.35955849289894104,
-            "end_logit": 1.2612593173980713,
-            "text": "with the Carolingian-based cultures of West Francia.",
-            "probability": 0.053139884024858475
+            "start_logit": -1.0829843282699585,
+            "end_logit": 9.2239990234375,
+            "text": "leader Rollo",
+            "probability": 3.9465227018808946e-05
         },
         {
-            "start_logit": 0.3469615876674652,
-            "end_logit": 1.2612593173980713,
-            "text": ", their descendants would gradually merge with the Carolingian-based cultures of West Francia.",
-            "probability": 0.05247468501329422
+            "start_logit": -2.1284871101379395,
+            "end_logit": 9.2239990234375,
+            "text": "their leader Rollo",
+            "probability": 1.3872620911570266e-05
         },
         {
-            "start_logit": 0.7737308740615845,
-            "end_logit": 0.7976903319358826,
-            "text": "from",
-            "probability": 0.05057872459292412
+            "start_logit": -2.6902353763580322,
+            "end_logit": 9.2239990234375,
+            "text": "Denmark, Iceland and Norway who, under their leader Rollo",
+            "probability": 7.910323802207131e-06
         },
         {
-            "start_logit": 0.5825141072273254,
-            "end_logit": 0.9860783219337463,
-            "text": "half of the 10th century, and it continued to evolve over the succeeding centuries.",
-            "probability": 0.050435855984687805
+            "start_logit": 9.056861877441406,
+            "end_logit": -2.6657614707946777,
+            "text": "Rollo, agreed to swear fealty to King Charles III",
+            "probability": 6.858610049675917e-06
         },
         {
-            "start_logit": 0.47673043608665466,
-            "end_logit": 1.0793964862823486,
-            "text": ". The distinct cultural and ethnic identity of the",
-            "probability": 0.04981105029582977
+            "start_logit": 9.056861877441406,
+            "end_logit": -3.028089761734009,
+            "text": "Rollo, agreed to swear fealty to King Charles III of West Francia",
+            "probability": 4.7739649744471535e-06
         },
         {
-            "start_logit": 0.4331676959991455,
-            "end_logit": 1.0793964862823486,
-            "text": "would gradually merge with the Carolingian-based cultures of West Francia. The distinct cultural and ethnic identity of the",
-            "probability": 0.047687727957963943
+            "start_logit": -3.646221399307251,
+            "end_logit": 9.2239990234375,
+            "text": "Norway who, under their leader Rollo",
+            "probability": 3.0409887585847173e-06
         },
         {
-            "start_logit": 0.7737308740615845,
-            "end_logit": 0.7376991510391235,
-            "text": "from Norse (\"Norman\" comes from \"Norseman\") raiders and pirates from Denmark, Iceland and Norway who",
-            "probability": 0.04763367772102356
+            "start_logit": -4.048278331756592,
+            "end_logit": 9.2239990234375,
+            "text": "Iceland and Norway who, under their leader Rollo",
+            "probability": 2.034245426330017e-06
         },
         {
-            "start_logit": 0.34301328659057617,
-            "end_logit": 1.1544326543807983,
-            "text": ".",
-            "probability": 0.04697219654917717
+            "start_logit": 9.056861877441406,
+            "end_logit": -4.056347846984863,
+            "text": "Rollo, agreed to swear fealty to King Charles",
+            "probability": 1.7073098206310533e-06
         },
         {
-            "start_logit": 0.6973050832748413,
-            "end_logit": 0.7976903319358826,
-            "text": ", a region in France. They were descended from",
-            "probability": 0.04685723036527634
+            "start_logit": -4.409167766571045,
+            "end_logit": 9.2239990234375,
+            "text": "raiders and pirates from Denmark, Iceland and Norway who, under their leader Rollo",
+            "probability": 1.417983185092453e-06
         },
         {
-            "start_logit": 0.4039287567138672,
-            "end_logit": 1.0793964862823486,
-            "text": "gradually merge with the Carolingian-based cultures of West Francia. The distinct cultural and ethnic identity of the",
-            "probability": 0.0463135801255703
+            "start_logit": -4.629017353057861,
+            "end_logit": 9.2239990234375,
+            "text": "Norse (\"Norman\" comes from \"Norseman\") raiders and pirates from Denmark, Iceland and Norway who, under their leader Rollo",
+            "probability": 1.138130414801708e-06
         },
         {
-            "start_logit": 0.5825141072273254,
-            "end_logit": 0.8990265727043152,
-            "text": "half of the 10th century, and it continued to",
-            "probability": 0.04623100161552429
+            "start_logit": -5.624743938446045,
+            "end_logit": 9.2239990234375,
+            "text": "Norseman\") raiders and pirates from Denmark, Iceland and Norway who, under their leader Rollo",
+            "probability": 4.2048745285683253e-07
         },
         {
-            "start_logit": 0.39479100704193115,
-            "end_logit": 1.0793964862823486,
-            "text": "cultural and ethnic identity of the",
-            "probability": 0.04589230567216873
+            "start_logit": 9.056861877441406,
+            "end_logit": -5.714618682861328,
+            "text": "Rollo, agreed to swear fealty to King",
+            "probability": 3.251879547860881e-07
         },
         {
-            "start_logit": 0.5791465640068054,
-            "end_logit": 0.8782303929328918,
-            "text": "of assimilation and mixing with the native Frankish and Roman-Gaulish populations, their descendants",
-            "probability": 0.045127276331186295
+            "start_logit": 9.056861877441406,
+            "end_logit": -5.776541709899902,
+            "text": "Rollo, agreed to swear fealty to King Charles III of West Francia.",
+            "probability": 3.056620982988534e-07
         },
         {
-            "start_logit": 0.4559140205383301,
-            "end_logit": 0.9860783219337463,
-            "text": "of the 10th century, and it continued to evolve over the succeeding centuries.",
-            "probability": 0.04443832486867905
+            "start_logit": -6.12755012512207,
+            "end_logit": 9.2239990234375,
+            "text": "under their leader Rollo",
+            "probability": 2.5432399297642405e-07
         },
         {
-            "start_logit": 0.35955849289894104,
-            "end_logit": 1.0793964862823486,
-            "text": "with the Carolingian-based cultures of West Francia. The distinct cultural and ethnic identity of the",
-            "probability": 0.04430355504155159
-        },
-        {
-            "start_logit": 0.35601508617401123,
-            "end_logit": 1.0793964862823486,
-            "text": "and ethnic identity of the",
-            "probability": 0.04414684697985649
-        },
-        {
-            "start_logit": -0.08812093734741211,
-            "end_logit": 0.09395113587379456,
+            "start_logit": -0.01137531641870737,
+            "end_logit": 0.45324257016181946,
             "text": "",
-            "probability": 0.010569158010184765
+            "probability": 1.788617431941475e-08
+        },
+        {
+            "start_logit": -0.6414366960525513,
+            "end_logit": -0.8831018209457397,
+            "text": "o,",
+            "probability": 2.503330431835593e-09
         }
     ],
     "56ddde6b9a695914005b962c": [
         {
-            "start_logit": 0.48118865489959717,
-            "end_logit": 1.2629679441452026,
-            "text": ".",
-            "probability": 0.06237919256091118
+            "start_logit": 8.234457969665527,
+            "end_logit": 8.196364402770996,
+            "text": "10th",
+            "probability": 0.8738006949424744
         },
         {
-            "start_logit": 0.4100818932056427,
-            "end_logit": 1.2629679441452026,
-            "text": "would gradually merge with the Carolingian-based cultures of West Francia.",
-            "probability": 0.058097634464502335
+            "start_logit": 8.234457969665527,
+            "end_logit": 5.923588752746582,
+            "text": "10th century",
+            "probability": 0.09002403169870377
         },
         {
-            "start_logit": 0.6920781135559082,
-            "end_logit": 0.962487518787384,
-            "text": ", a region in France.",
-            "probability": 0.057033609598875046
+            "start_logit": 4.238958835601807,
+            "end_logit": 8.196364402770996,
+            "text": "first half of the 10th",
+            "probability": 0.01607642136514187
         },
         {
-            "start_logit": 0.38957348465919495,
-            "end_logit": 1.2629679441452026,
-            "text": "gradually merge with the Carolingian-based cultures of West Francia.",
-            "probability": 0.05691827833652496
+            "start_logit": 3.9598164558410645,
+            "end_logit": 8.196364402770996,
+            "text": "the 10th",
+            "probability": 0.01216072216629982
         },
         {
-            "start_logit": 0.38787540793418884,
-            "end_logit": 1.2629679441452026,
-            "text": "with the Carolingian-based cultures of West Francia.",
-            "probability": 0.056821711361408234
+            "start_logit": 2.8335211277008057,
+            "end_logit": 8.196364402770996,
+            "text": "the first half of the 10th",
+            "probability": 0.003942894749343395
         },
         {
-            "start_logit": 0.5768964290618896,
-            "end_logit": 1.0084009170532227,
-            "text": "half of the 10th century, and it continued to evolve over the succeeding centuries.",
-            "probability": 0.05321671441197395
+            "start_logit": 4.238958835601807,
+            "end_logit": 5.923588752746582,
+            "text": "first half of the 10th century",
+            "probability": 0.001656286302022636
         },
         {
-            "start_logit": 0.7070498466491699,
-            "end_logit": 0.7954718470573425,
-            "text": "from",
-            "probability": 0.048989053815603256
+            "start_logit": 3.9598164558410645,
+            "end_logit": 5.923588752746582,
+            "text": "the 10th century",
+            "probability": 0.0012528683291748166
         },
         {
-            "start_logit": 0.48118865489959717,
-            "end_logit": 1.0211591720581055,
-            "text": ". The distinct cultural and ethnic identity of the",
-            "probability": 0.048980534076690674
+            "start_logit": 2.8335211277008057,
+            "end_logit": 5.923588752746582,
+            "text": "the first half of the 10th century",
+            "probability": 0.00040621994412504137
         },
         {
-            "start_logit": 0.4841518998146057,
-            "end_logit": 1.0084009170532227,
-            "text": "of the 10th century, and it continued to evolve over the succeeding centuries.",
-            "probability": 0.04850310832262039
+            "start_logit": 0.2191745936870575,
+            "end_logit": 8.196364402770996,
+            "text": "half of the 10th",
+            "probability": 0.00028868147637695074
         },
         {
-            "start_logit": 0.6920781135559082,
-            "end_logit": 0.7954718470573425,
-            "text": ", a region in France. They were descended from",
-            "probability": 0.04826106131076813
+            "start_logit": -0.4508918821811676,
+            "end_logit": 8.196364402770996,
+            "text": "in the first half of the 10th",
+            "probability": 0.00014771091809961945
         },
         {
-            "start_logit": 0.5768964290618896,
-            "end_logit": 0.8863363265991211,
-            "text": "half of the 10th century, and it continued to",
-            "probability": 0.047101642936468124
+            "start_logit": 3.8160293102264404,
+            "end_logit": 3.893970489501953,
+            "text": "10th",
+            "probability": 0.00014256317808758467
         },
         {
-            "start_logit": 0.5884658694267273,
-            "end_logit": 0.8468345999717712,
-            "text": "of assimilation and mixing with the native Frankish and Roman-Gaulish populations, their descendants",
-            "probability": 0.04580419138073921
+            "start_logit": 0.2191745936870575,
+            "end_logit": 5.923588752746582,
+            "text": "half of the 10th century",
+            "probability": 2.9741648177150637e-05
         },
         {
-            "start_logit": 0.4100818932056427,
-            "end_logit": 1.0211591720581055,
-            "text": "would gradually merge with the Carolingian-based cultures of West Francia. The distinct cultural and ethnic identity of the",
-            "probability": 0.04561862722039223
+            "start_logit": -0.4508918821811676,
+            "end_logit": 5.923588752746582,
+            "text": "in the first half of the 10th century",
+            "probability": 1.5218040971376467e-05
         },
         {
-            "start_logit": 0.39665424823760986,
-            "end_logit": 1.0211591720581055,
-            "text": "cultural and ethnic identity of the",
-            "probability": 0.045010168105363846
+            "start_logit": 8.234457969665527,
+            "end_logit": -2.7968590259552,
+            "text": "10th century,",
+            "probability": 1.4693193406856153e-05
         },
         {
-            "start_logit": 0.38957348465919495,
-            "end_logit": 1.0211591720581055,
-            "text": "gradually merge with the Carolingian-based cultures of West Francia. The distinct cultural and ethnic identity of the",
-            "probability": 0.044692594558000565
+            "start_logit": -2.906240701675415,
+            "end_logit": 8.196364402770996,
+            "text": "of the 10th",
+            "probability": 1.2678518942266237e-05
         },
         {
-            "start_logit": 0.38787540793418884,
-            "end_logit": 1.0211591720581055,
-            "text": "with the Carolingian-based cultures of West Francia. The distinct cultural and ethnic identity of the",
-            "probability": 0.04461676627397537
+            "start_logit": 8.234457969665527,
+            "end_logit": -3.2276453971862793,
+            "text": "10th century, and it continued to evolve over the succeeding centuries",
+            "probability": 9.550544746161904e-06
         },
         {
-            "start_logit": 0.39665424823760986,
-            "end_logit": 1.0084009170532227,
-            "text": "cultural and ethnic identity of the Normans emerged initially in the first half of the 10th century, and it continued to evolve over the succeeding centuries.",
-            "probability": 0.04443956911563873
+            "start_logit": -3.419138193130493,
+            "end_logit": 8.196364402770996,
+            "text": "initially in the first half of the 10th",
+            "probability": 7.591367193526821e-06
         },
         {
-            "start_logit": 0.5768964290618896,
-            "end_logit": 0.8279761672019958,
-            "text": "half of the 10th century, and it continued to evolve over the",
-            "probability": 0.04443145915865898
+            "start_logit": 3.8160293102264404,
+            "end_logit": 0.9049346446990967,
+            "text": "10th and 11th",
+            "probability": 7.1760546234145295e-06
         },
         {
-            "start_logit": 0.5884658694267273,
-            "end_logit": 0.8130106925964355,
-            "text": "of",
-            "probability": 0.044280827045440674
+            "start_logit": -2.22096848487854,
+            "end_logit": 5.923588752746582,
+            "text": "century",
+            "probability": 2.591937573015457e-06
         },
         {
-            "start_logit": 0.5884658694267273,
-            "end_logit": 0.8075798153877258,
-            "text": "of assimilation and mixing with the native Frankish and Roman-Gaulish populations, their descendants would",
-            "probability": 0.0440409891307354
+            "start_logit": -4.965912342071533,
+            "end_logit": 8.196364402770996,
+            "text": "The distinct cultural and ethnic identity of the Normans emerged initially in the first half of the 10th",
+            "probability": 1.6164570979526616e-06
         },
         {
-            "start_logit": -0.07840859889984131,
-            "end_logit": 0.0653761476278305,
+            "start_logit": -2.908912420272827,
+            "end_logit": -2.310171365737915,
             "text": "",
-            "probability": 0.010762229561805725
+            "probability": 3.459215136558669e-10
         }
     ]
 }
