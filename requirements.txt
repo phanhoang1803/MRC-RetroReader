@@ -3,3 +3,4 @@ wandb
 torch
 transformers
 scikit-learn
+streamlit
