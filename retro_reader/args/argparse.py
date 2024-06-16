@@ -59,4 +59,4 @@ class HfArgumentParser(OriginalHfArgumentParser):
             outputs.append(obj)
 
         # Return the list of dataclass instances as a tuple
-        return tuple(outputs)
+        return (*outputs,)

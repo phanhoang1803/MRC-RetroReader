@@ -242,7 +242,8 @@ class BaseReader(Trainer, ToMixin):
         
         # Call callback handler on evaluate
         self.control = self.callback_handler.on_evaluate(
-            self.args, self.state, self.control, metrics)
+            self.args, self.state, self.control, metrics
+        )
         
         # Stop tracking memory usage and update metrics
         self._memory_tracker.stop_and_update_metrics(metrics)

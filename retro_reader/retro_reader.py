@@ -212,19 +212,24 @@ class IntensiveReader(BaseReader):
                 "`predictions` should be a tuple with two elements (start_logits, end_logits) or three elements (start_logits, end_logits, choice_logits)."
             )
         
+        # if len(predictions) == 3:
+        #     all_start_logits, all_end_logits, all_choice_logits = predictions
+        # else:
+        #     all_start_logits, all_end_logits = predictions
+        #     all_choice_logits = None
+        
+        all_start_logits, all_end_logits = predictions[:2]
+        all_choice_logits = None
         if len(predictions) == 3:
-            all_start_logits, all_end_logits, all_choice_logits = predictions
-        else:
-            all_start_logits, all_end_logits = predictions
-            all_choice_logits = None
+            all_choice_logits = predictions[-1]
             
         # all_choice_logits = predictions[2] if len(predictions) == 3 else None
 
         # Build a map example to its corresponding features.
         example_id_to_index = {k: i for i, k in enumerate(examples[C.ID_COLUMN_NAME])}
-        features_per_examples = collections.defaultdict(list)
+        features_per_example = collections.defaultdict(list)
         for i, feature in enumerate(features):
-            features_per_examples[example_id_to_index[feature["example_id"]]].append(i)
+            features_per_example[example_id_to_index[feature["example_id"]]].append(i)
         
         all_predictions = collections.OrderedDict()
         all_nbest_json = collections.OrderedDict()
@@ -237,7 +242,7 @@ class IntensiveReader(BaseReader):
         # Looping through all the examples
         for example_index, example in enumerate(tqdm(examples)):
             # Those are the indices of the features associated to the current example.
-            feature_indices = features_per_examples[example_index]
+            feature_indices = features_per_example[example_index]
             
             min_null_prediction = None
             prelim_predictions = []
@@ -247,6 +252,7 @@ class IntensiveReader(BaseReader):
                 # We grab the predictions of the model for this feature.
                 start_logits = all_start_logits[feature_index]
                 end_logits = all_end_logits[feature_index]
+                
                 feature_null_score = start_logits[0] + end_logits[0]
                 if all_choice_logits is not None: 
                     choice_logits = all_choice_logits[feature_index] 
@@ -275,8 +281,8 @@ class IntensiveReader(BaseReader):
                     }
                     
                 # Go through all possibilities for the {top k} greater start and end logits
-                start_indexes = np.argsort(start_logits)[-1: -n_best_size - 1: -1].tolist()
-                end_indexes = np.argsort(end_logits)[-1: -n_best_size - 1: -1].tolist()
+                start_indexes = np.argsort(start_logits)[-1 : -n_best_size - 1 : -1].tolist()
+                end_indexes = np.argsort(end_logits)[-1 : -n_best_size - 1 : -1].tolist()
                 for start_index in start_indexes:
                     for end_index in end_indexes:
                         # We could hypothetically create invalid predictions, e.g., predict
@@ -414,7 +420,7 @@ class RearVerifier:
         score_ext: Dict[str, float],
         score_diff: Dict[str, float],
         nbest_preds: Dict[str, Dict[int, Dict[str, float]]]
-    ) -> Tuple[Dict[str, str], Dict[str, float]]:
+    ):
         """
         This function takes in the score_ext and score_diff dictionaries, and the nbest_preds dictionary.
         It performs a verification process on the input data and returns the output predictions and scores.
@@ -440,7 +446,10 @@ class RearVerifier:
                  self.beta2 * score_diff[key]]
             )
         # Calculate the mean score for each key and store it in output_scores
-        output_scores = {key: sum(scores) / float(len(scores)) for key, scores in all_scores.items()}
+        output_scores = {}
+        for key, scores in all_scores.items():
+            mean_score = sum(scores) / float(len(scores))
+            output_scores[key] = mean_score
         
         # Initialize an ordered dictionary to store all the nbest predictions
         all_nbest = collections.OrderedDict()

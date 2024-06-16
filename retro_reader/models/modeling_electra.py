@@ -109,8 +109,9 @@ class ElectraForQuestionAnsweringAVPool(ElectraPreTrainedModel):
         
         # For each input, the model outputs a vector of two numbers: the start and end logits.
         logits = self.qa_outputs(sequence_output)
-        start_logits = logits[:, :, 0].squeeze(-1).contiguous()
-        end_logits = logits[:, :, 1].squeeze(-1).contiguous()
+        start_logits, end_logits = logits.split(1, dim=-1)
+        start_logits = start_logits.squeeze(-1).contiguous()
+        end_logits = end_logits.squeeze(-1).contiguous()
         
         first_word = sequence_output[:, 0, :]
         
