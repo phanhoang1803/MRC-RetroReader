@@ -800,15 +800,15 @@ class RetroReader:
         )
         
         # Perform inference on sketch reader
-        self.sketch_reader.to(self.sketch_reader.args.device)
+        # self.sketch_reader.to(self.sketch_reader.args.device)
         score_ext = self.sketch_reader.predict(sketch_features, predict_examples)
-        self.sketch_reader.to("cpu")
+        # self.sketch_reader.to("cpu")
         
         # Perform inference on intensive reader
-        self.intensive_reader.to(self.intensive_reader.args.device)
+        # self.intensive_reader.to(self.intensive_reader.args.device)
         nbest_preds, score_diff = self.intensive_reader.predict(
             intensive_features, predict_examples, mode="retro_inference")
-        self.intensive_reader.to("cpu")
+        # self.intensive_reader.to("cpu")
         
         # Combine the outputs of the submodules
         predictions, scores = self.rear_verifier(score_ext, score_diff, nbest_preds)
