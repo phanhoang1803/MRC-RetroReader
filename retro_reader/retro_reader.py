@@ -643,6 +643,8 @@ class RetroReader:
             revision=retro_args.intensive_revision,
         )
         intensive_model.to(device)
+        for name, _ in intensive_model.named_parameters():
+            print(f"[Intensive] {name}")
         
         # Free intensive weights for transfer learning
         if retro_args.intensive_model_mode == "finetune":
