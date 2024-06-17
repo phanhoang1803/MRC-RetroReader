@@ -28,10 +28,13 @@ class RobertaForQuestionAnsweringAVPool(RobertaPreTrainedModel):
         
         self.roberta = RobertaModel(config)
         self.qa_outputs = nn.Linear(config.hidden_size, config.num_labels)
+        self.qa_outputs.name = "qa_outputs"
+        
         self.has_ans = nn.Sequential(
             nn.Dropout(p=config.hidden_dropout_prob),
             nn.Linear(config.hidden_size, 2),
         )
+        self.has_ans.name = "has_ans"
         
         self.post_init()
     def forward(
