@@ -51,7 +51,8 @@ def get_sketch_features(
             return_overflowing_tokens=True,
             return_offsets_mapping=False,
             return_token_type_ids=data_args.return_token_type_ids,
-            padding="max_length" if data_args.pad_to_max_length else False,
+            #padding="max_length" if data_args.pad_to_max_length else False,
+            padding="max_length"
         )
         
         return tokenized_examples
