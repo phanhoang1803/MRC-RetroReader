@@ -95,9 +95,9 @@ class DistilBertForQuestionAnsweringAVPool(DistilBertPreTrainedModel):
             
             # sometimes the start/end positions are outside our model inputs, we ignore these terms
             ignored_index = start_logits.size(1)
-            start_positions.clamp_(0, ignored_index).long()
-            end_positions.clamp_(0, ignored_index).long()
-            is_impossibles.clamp_(0, ignored_index).long()
+            start_positions.clamp_(0, ignored_index)
+            end_positions.clamp_(0, ignored_index)
+            is_impossibles.clamp_(0, ignored_index)
 
             loss_fct = CrossEntropyLoss(ignore_index=ignored_index)
             start_loss = loss_fct(start_logits, start_positions)
