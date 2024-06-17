@@ -199,7 +199,7 @@ def get_intensive_features(
         # The tokenizer also returns the overflowing tokens, offsets mapping, and token type IDs.
         # The padding strategy is determined by the data_args.pad_to_max_length parameter.
         
-        examples[QUESTION_COLUMN_NAME] = examples[QUESTION_COLUMN_NAME].strip()
+        examples[QUESTION_COLUMN_NAME] = [question.strip() for question in examples[QUESTION_COLUMN_NAME]]
         tokenized_examples = tokenizer(
             examples[QUESTION_COLUMN_NAME if pad_on_right else CONTEXT_COLUMN_NAME],
             examples[CONTEXT_COLUMN_NAME if pad_on_right else QUESTION_COLUMN_NAME],
