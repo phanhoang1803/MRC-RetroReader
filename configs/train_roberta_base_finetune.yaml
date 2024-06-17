@@ -20,11 +20,11 @@ RetroDataModelArguments:
     best_cof: 1
     
     # SketchModelArguments
-    sketch_model_name: FacebookAI/roberta-base
+    sketch_model_name: cardiffnlp/twitter-roberta-base-emotion
     sketch_architectures: RobertaForSequenceClassification
     
     # IntensiveModelArguments
-    intensive_model_name: FacebookAI/roberta-base
+    intensive_model_name: cardiffnlp/twitter-roberta-base-emotion
     intensive_model_mode: finetune
     intensive_architectures: RobertaForQuestionAnsweringAVPool
     
