@@ -44,8 +44,8 @@ TrainingArguments:
     # load_best_model_at_end: True  # Disable to avoid loading the best model at the end
     # no need to specify checkpoint_dir, it defaults to output_dir
     # no need to specify logging_dir, it defaults to output_dir
-    per_device_train_batch_size: 512
-    per_device_eval_batch_size: 512
+    per_device_train_batch_size: 64
+    per_device_eval_batch_size: 64
     num_train_epochs: 10.0
     # no need to specify metric_for_best_model for resuming from checkpoints
     no_cuda: False
