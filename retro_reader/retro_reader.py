@@ -770,7 +770,7 @@ class RetroReader:
             print("Intensive reader training finished")
         print("Training finished")
             
-    def inference(self, predict_examples: datasets.Dataset, return_submodule_outputs: bool = False) -> Tuple[Any]:
+    def inference(self, predict_examples: datasets.Dataset, return_submodule_outputs: bool = True) -> Tuple[Any]:
         """
         Performs inference on the given predict examples dataset.
 

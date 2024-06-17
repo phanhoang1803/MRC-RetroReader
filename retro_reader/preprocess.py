@@ -44,13 +44,15 @@ def get_sketch_features(
         tokenized_examples = tokenizer(
             examples[QUESTION_COLUMN_NAME if pad_on_right else CONTEXT_COLUMN_NAME],
             examples[CONTEXT_COLUMN_NAME if pad_on_right else QUESTION_COLUMN_NAME],
-            truncation="only_second" if pad_on_right else "only_first",
+            #truncation="only_second" if pad_on_right else "only_first",
+            truncation=True,
             max_length=max_seq_length,
             stride=data_args.doc_stride,
             return_overflowing_tokens=True,
             return_offsets_mapping=False,
             return_token_type_ids=data_args.return_token_type_ids,
-            padding="max_length" if data_args.pad_to_max_length else False,
+            #padding="max_length" if data_args.pad_to_max_length else False,
+            padding="max_length"
         )
         
         return tokenized_examples
