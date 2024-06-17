@@ -832,7 +832,7 @@ class RetroReader:
             dict: A dictionary containing the evaluation metrics.
         """
         # Perform inference on the test dataset
-        predictions, scores = self.inference(test_dataset)
+        predictions, scores, score_ext, nbest_preds, score_diff = self.inference(test_dataset, return_submodule_outputs=True)
         
         # Extract ground truth answers
         ground_truths = test_dataset[C.ANSWER_COLUMN_NAME]
