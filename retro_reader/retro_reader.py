@@ -10,6 +10,7 @@ from tqdm import tqdm
 
 import datasets
 
+
 from transformers import AutoTokenizer
 from transformers.tokenization_utils_fast import PreTrainedTokenizerFast
 from transformers.utils import logging
@@ -778,7 +779,7 @@ class RetroReader:
             return_submodule_outputs (bool, optional): Whether to return the outputs of the submodules. Defaults to False.
 
         Returns:
-            Tuple[Any]: A tuple containing the predictions, scores, and optionally the outputs of the submodules.
+            Tuple[Any]: A tuple containing the predictions, scores, and optionally the outputs (score_ext, nbest_preds, score_diff) of the submodules.
         """
         # Add the example_id column if it doesn't exist
         if "example_id" not in predict_examples.column_names:
@@ -800,15 +801,15 @@ class RetroReader:
         )
         
         # Perform inference on sketch reader
-        #self.sketch_reader.to(self.sketch_reader.args.device)
+        # self.sketch_reader.to(self.sketch_reader.args.device)
         score_ext = self.sketch_reader.predict(sketch_features, predict_examples)
-        #self.sketch_reader.to("cpu")
+        # self.sketch_reader.to("cpu")
         
         # Perform inference on intensive reader
-        #self.intensive_reader.to(self.intensive_reader.args.device)
+        # self.intensive_reader.to(self.intensive_reader.args.device)
         nbest_preds, score_diff = self.intensive_reader.predict(
             intensive_features, predict_examples, mode="retro_inference")
-        #self.intensive_reader.to("cpu")
+        # self.intensive_reader.to("cpu")
         
         # Combine the outputs of the submodules
         predictions, scores = self.rear_verifier(score_ext, score_diff, nbest_preds)
@@ -819,7 +820,41 @@ class RetroReader:
             outputs += (score_ext, nbest_preds, score_diff)
         
         return outputs
-            
+    
+    def evaluate(self, test_dataset: datasets.Dataset) -> dict:
+        """
+        Evaluates the model on the given test dataset.
+
+        Args:
+            test_dataset (Dataset): The dataset containing the test examples and ground truth answers.
+
+        Returns:
+            dict: A dictionary containing the evaluation metrics.
+        """
+        # Perform inference on the test dataset
+        predictions, scores, score_ext, nbest_preds, score_diff = self.inference(test_dataset, return_submodule_outputs=True)
+        
+        # Extract ground truth answers
+        ground_truths = test_dataset[C.ANSWER_COLUMN_NAME]
+        
+        formatted_predictions = []
+        for example, pred in zip(test_dataset, predictions):
+            formatted_predictions.append({
+                'id': example[C.ID_COLUMN_NAME],
+                'prediction_text': pred,
+                'no_answer_probability': 0.0  # Assuming no_answer_probability is 0 for simplicity
+            })
+        
+        formatted_references = []
+        for example in test_dataset:
+            formatted_references.append({
+                'id': example[C.ID_COLUMN_NAME],
+                'answers': example[C.ANSWER_COLUMN_NAME],
+            })
+        
+        # Return the evaluation metrics
+        return compute_squad_v2(EvalPrediction(predictions=formatted_predictions, label_ids=formatted_references))
+    
     @property
     def null_score_diff_threshold(self):
         return self.args.null_score_diff_threshold
