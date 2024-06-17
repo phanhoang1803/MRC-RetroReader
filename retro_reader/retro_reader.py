@@ -769,7 +769,7 @@ class RetroReader:
             print("Intensive reader training finished")
         print("Training finished")
             
-    def inference(self, predict_examples: datasets.Dataset, return_submodule_outputs: bool = False) -> Tuple[Any]:
+    def inference(self, predict_examples: datasets.Dataset, return_submodule_outputs: bool = True) -> Tuple[Any]:
         """
         Performs inference on the given predict examples dataset.
 
@@ -800,15 +800,15 @@ class RetroReader:
         )
         
         # Perform inference on sketch reader
-        self.sketch_reader.to(self.sketch_reader.args.device)
+        #self.sketch_reader.to(self.sketch_reader.args.device)
         score_ext = self.sketch_reader.predict(sketch_features, predict_examples)
-        self.sketch_reader.to("cpu")
+        #self.sketch_reader.to("cpu")
         
         # Perform inference on intensive reader
-        self.intensive_reader.to(self.intensive_reader.args.device)
+        #self.intensive_reader.to(self.intensive_reader.args.device)
         nbest_preds, score_diff = self.intensive_reader.predict(
             intensive_features, predict_examples, mode="retro_inference")
-        self.intensive_reader.to("cpu")
+        #self.intensive_reader.to("cpu")
         
         # Combine the outputs of the submodules
         predictions, scores = self.rear_verifier(score_ext, score_diff, nbest_preds)

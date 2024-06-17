@@ -23,14 +23,14 @@ RetroDataModelArguments:
     use_auth_token: False
     
     # SketchModelArguments
-    sketch_revision: en-electra-large-sketch
-    sketch_model_name: jinmang2/retro-reader
+    sketch_revision: en-electra-base-sketch
+    sketch_model_name: faori/retro_reeader
     # sketch_model_mode: transfer
     sketch_architectures: ElectraForSequenceClassification
     
     # IntensiveModelArguments
-    intensive_revision: en-electra-large-intensive
-    intensive_model_name: jinmang2/retro-reader
+    intensive_revision: en-electra-base-intensive
+    intensive_model_name: faori/retro_reeader
     # intensive_model_mode: transfer
     intensive_architectures: ElectraForQuestionAnsweringAVPool
     
