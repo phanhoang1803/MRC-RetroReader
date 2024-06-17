@@ -572,6 +572,8 @@ class RetroReader:
             use_auth_token=retro_args.use_auth_token,
             revision=retro_args.sketch_revision,
         )
+        for name, _ in sketch_model.named_parameters():
+            print(f"[Sketch] {name}")
         sketch_model.to(device)
         
         # # Free sketch weights for transfer learning
