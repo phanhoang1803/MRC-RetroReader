@@ -39,7 +39,7 @@ wandb off
 import warnings
 warnings.filterwarnings('ignore')
 ``` 
-- To train the model using the SQuAD v2 dataset:
+- To train the model using the SQuAD v2 dataset, change the per_device_train_batch_size, and per_device_eval_batch_size in the config file to appropriate values based on your GPU memory:
 ```
 python train_squad_v2.py --config path-to-yaml-file --module all --batch_size batch_size
 ```
