@@ -59,6 +59,7 @@ python app1.py
 gradio deploy
 ```
 
+- For Exploratory Data Analysis (EDA), please refer to "squad_eda.ipynb" for more details.
 
 ## Dependencies
 
