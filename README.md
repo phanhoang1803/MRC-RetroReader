@@ -14,6 +14,7 @@ Thanks to these advancements, MRC now requires the capability to differentiate u
 - [Table of Contents](#table-of-contents)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Results](#results)
 - [Dependencies](#dependencies)
 - [Configuration](#configuration)
 - [Contributors](#contributors)
@@ -60,6 +61,17 @@ gradio deploy
 ```
 
 - For Exploratory Data Analysis (EDA), please refer to "squad_eda.ipynb" for more details.
+
+## Results
+
+| **Backbone Encoder** 	| **Total** 	| **Total** | **HasAns** 	| **HasAns**| **NoAns** 	|
+|----------------------	|:---------:	|:-----:	|:----------:	|:-----:	|:---------:	|
+|                      	|     EM    	|   F1  	|     EM     	|   F1  	|   EM/F1   	|
+| **DistilBert**       	|     0     	|   0   	|      0     	|   0   	|     0     	|
+| **RoBERTa**          	|    78.2   	| 82.01 	|    76.9    	| 84.53 	|   79.49   	|
+| **Electra Base**     	|    77.4   	| 80.97 	|    80.31   	| 87.46 	|    74.5   	|
+| **Electra Large**    	|   84.46   	| 87.98 	|    81.81   	| 88.86 	|   87.11   	|
+
 
 ## Dependencies
 
