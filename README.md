@@ -1,6 +1,6 @@
 # MRC-RetroReader
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/FRQzv69Aozc/0.jpg)](https://www.youtube.com/watch?v=FRQzv69Aozc)
+[![MRC-RetroReader Demo](https://img.youtube.com/vi/FRQzv69Aozc/0.jpg)](https://www.youtube.com/watch?v=FRQzv69Aozc)
 
 ## Introduction
 
