@@ -12,6 +12,7 @@ Thanks to these advancements, MRC now requires the capability to differentiate u
 
 - [Introduction](#introduction)
 - [Table of Contents](#table-of-contents)
+- [Demo](#demo)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Results](#results)
@@ -19,6 +20,13 @@ Thanks to these advancements, MRC now requires the capability to differentiate u
 - [Configuration](#configuration)
 - [Contributors](#contributors)
 - [License](#license)
+
+## Demo
+For a live demonstration of MRC-RetroReader in action, please visit our [demo page](https://huggingface.co/spaces/faori/HTK).
+
+This demo allows you to interact with MRC-RetroReader by providing a passage of text and asking questions. It showcases the model's ability to comprehend the text and provide accurate answers based on the input.
+
+In case the demo link is no longer valid or if you prefer to run the demo locally, you can follow the instructions in the [Usage](#usage) section to set up and use MRC-RetroReader on your own machine.
 
 ## Installation
 
@@ -31,7 +39,8 @@ Thanks to these advancements, MRC now requires the capability to differentiate u
     ```
     pip install -r requirements.txt
     ```
-
+3. For pretrained weights:
+MRC-RetroReader comes with pretrained weights that you can use to immediately leverage its capabilities without training from scratch. These pretrained weights are hosted on [Hugging Face Model Hub](https://huggingface.co/faori/retro_reeader/tree/main).
 ## Usage
 
 - For notebooks: to running automatically, turn off wandb, warning if necessary:
