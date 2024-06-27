@@ -1,6 +1,11 @@
 # MRC-RetroReader
 
-[![MRC-RetroReader Demo](https://img.youtube.com/vi/FRQzv69Aozc/0.jpg)](https://www.youtube.com/watch?v=FRQzv69Aozc)
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=FRQzv69Aozc">
+    <img src="https://img.youtube.com/vi/FRQzv69Aozc/0.jpg" alt="MRC-RetroReader Demo">
+  </a>
+</p>
+
 
 ## Introduction
 
