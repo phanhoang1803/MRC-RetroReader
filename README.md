@@ -102,8 +102,8 @@ For a full list of dependencies, see `requirements.txt`.
 Configuration files can be found in the `configs` directory. Adjust the parameters in these files to customize the model training and evaluation.
 
 ## Contributors
-- khanhtuoimui
 - phanhoang1803
+- khanhtuoimui
 
 ## License
 
