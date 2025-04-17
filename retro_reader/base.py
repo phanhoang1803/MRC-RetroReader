@@ -16,11 +16,11 @@ import numpy as np
 #     is_torch_xla_available,
 # )
 
-from transformers.utils.import_utils import (
-    is_datasets_available,
-    is_torch_tpu_available,
-    is_torch_xla_available,
-)
+# from transformers.utils.import_utils import (
+#     is_datasets_available,
+#     is_torch_tpu_available,
+#     is_torch_xla_available,
+# )
 
 from transformers.trainer_utils import (
     PredictionOutput,
