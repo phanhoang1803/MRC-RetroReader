@@ -2,7 +2,7 @@ evaluate==0.4.2
 wandb
 torch
 transformers
-scikit-lear
+scikit-learn
 streamlit
 accelerate
 gradio
