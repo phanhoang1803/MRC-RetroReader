@@ -1,7 +1,7 @@
 evaluate==0.4.2
 wandb
 torch
-transformers==4.13.0
+transformers
 scikit-lear
 streamlit
 accelerate
