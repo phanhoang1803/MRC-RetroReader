@@ -10,7 +10,13 @@ from typing import Optional, List, Dict, Tuple, Callable, Any, Union
 import torch
 import numpy as np
 
-from transformers import (
+# from transformers import (
+#     is_datasets_available,
+#     is_torch_tpu_available,
+#     is_torch_xla_available,
+# )
+
+from transformers.utils.import_utils import (
     is_datasets_available,
     is_torch_tpu_available,
     is_torch_xla_available,
